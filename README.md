@@ -1,6 +1,6 @@
 # Control API
 
-Functions for simulation control algorithms in epa-swmm. 
+Functions for simulating control algorithms in epa-swmm. 
 
 ## Dependency 
 
