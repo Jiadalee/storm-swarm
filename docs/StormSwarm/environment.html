@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.5.1" />
+<title>StormSwarm.environment API documentation</title>
+<meta name="description" content="Environment abstraction for SWMM …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id=^header-]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:1px solid #ddd;margin:1em 0 1em 4ch}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}#index .two-column{column-count:2}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.name small{font-weight:normal}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary{background:#ffc;font-weight:400;font-size:.8em;width:11em;text-transform:uppercase;padding:0px 8px;border:1px solid #fd6;border-radius:5px;cursor:pointer}.source summary:hover{background:#fe9 !important}.source[open] summary{background:#fda}.source pre{max-height:500px;overflow-y:scroll;margin-bottom:15px}.hlist{list-syle:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink;]</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a,a:visited{text-decoration:underline}a[href]:after{content:" (" attr(href) ")"}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title"><code>StormSwarm.environment</code> module</h1>
+</header>
+<section id="section-intro">
+<p>Environment abstraction for SWMM. </p>
+<p>This encompasses all the things related to modelling
+SWMM.</p>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">&#34;&#34;&#34;
+Environment abstraction for SWMM. 
+
+This encompasses all the things related to modelling 
+SWMM.
+&#34;&#34;&#34;
+import numpy as np
+from StormSwarm.simulation import Simulation
+
+class environment:
+    &#34;&#34;&#34;
+    &#34;&#34;&#34;
+    def __init__(self, config):
+        &#34;&#34;&#34;
+        parmas:
+        ----------------------------------------
+        swmm_input       : path to the input file
+        reward_function  : reward function based on the state.
+        state_elements   : { &#34;state_order&#34; : [] # Order in which states should be considered
+                             &#34;node id&#34;     : &#34;&lt;depth or flow&gt;&#34;
+                             &#34;state_len&#34;   : int
+                           }
+        control_elements : List of control elements
+        timesteps        : Time interval between each control step
+
+        TODO: How would you handle CNN 1D ?
+        &#34;&#34;&#34;
+        # Dimension of the state and action space
+        self.state_len        = config[&#34;state_elements&#34;][&#34;state_len&#34;]
+        self.action_len       = len(config[&#34;control_elements&#34;])
+        
+
+        # Assign the reward function
+        self.reward_fun       = config[&#34;reward_function&#34;]
+
+        # SWMM object
+        self.sim              = Simulation(config[&#34;swmm_input&#34;])
+        self.sim.start()
+
+        # SWMM Config
+        self.timesteps        = config[&#34;timesteps&#34;]
+        self.control_elements = config[&#34;control_elements&#34;]
+        self.state_elements   = config[&#34;state_elements&#34;]
+        
+        # methods
+        self.methods = {&#34;depth&#34;: self._getDepth, &#34;flow&#34;: self._getFlow}
+    
+    def _state(self):
+        &#34;&#34;&#34;
+        Query the states based on the state elements
+        &#34;&#34;&#34;
+        state = []
+        for i in self.state_elements[&#34;state_order&#34;]:
+            state.append(self.methods[self.state_elements[i]](i))
+        
+        state = np.asarray(state)
+        return state 
+
+    def _reward(self):
+        &#34;&#34;&#34;
+        Reward based on the user defined function 
+        &#34;&#34;&#34;
+        reward = self.reward_fun(self.sim)
+        return reward
+
+    def step(self, actions):
+        &#34;&#34;&#34;
+        Implements the control action and forwards
+        the simulation to the predefined steps 
+
+        params:
+        ----------------------------------------
+        actions  : actions to take as an array (1 x n)
+        
+        returns:
+        ----------------------------------------
+        new_state : Next state
+        reward    : Reward based on the defimed reward func.
+        done      : Terminal state
+        meta      : Any meta data you would need...
+        &#34;&#34;&#34;
+        # implement the actions
+        for asset, valve_position in zip(self.control_elements, actions):
+
+            self._setValvePosition(asset, valve_position)
+        
+        # take the step !
+        time = self.sim._model.swmm_step()
+        done = False if time &gt; 0 else True
+
+        new_state = self._state()
+        reward    = self._reward()
+
+        return new_state, reward, done
+
+
+    def reset(self):
+        &#34;&#34;&#34;
+        Resets the simulation and retuns the state 
+        &#34;&#34;&#34;
+        self.sim._model.swmm_end()
+        self.sim._model.swmm_close()
+
+        # Start the next simulation
+        self.sim._model.swmm_open()
+        self.sim._model.swmm_start()
+
+        # get the state
+        state = self._state()
+        return state
+
+
+    def _getDepth(self, ID):
+        return self.sim._model.getNodeResult(ID, 5)
+
+    def _getFlow(self, ID):
+        return self.sim._model.getLinkResult(ID, 0)
+
+    def _getInflow(self, ID):
+        pass
+
+    def _setInflow(self, ID, value):
+        pass 
+
+    def _getValvePosition(self, ID):
+        return self.sim._model.getLinkResult(ID, 6) 
+
+    def _setValvePosition(self, ID, valve):
+        self.sim._model.setLinkSetting(ID, valve) 
+
+    def _getRainfall(self, gage):
+        pass 
+
+    def _setRainfall(self, gage, value):
+        pass
+
+    def _terminate(self):
+        self.sim._model.swmm_end()
+        self.sim._model.swmm_close()
+
+    def initial_state(self):
+        return self._state()}</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="StormSwarm.environment.environment"><code class="flex name class">
+<span>class <span class="ident">environment</span></span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class environment:
+    &#34;&#34;&#34;
+    &#34;&#34;&#34;
+    def __init__(self, config):
+        &#34;&#34;&#34;
+        parmas:
+        ----------------------------------------
+        swmm_input       : path to the input file
+        reward_function  : reward function based on the state.
+        state_elements   : { &#34;state_order&#34; : [] # Order in which states should be considered
+                             &#34;node id&#34;     : &#34;&lt;depth or flow&gt;&#34;
+                             &#34;state_len&#34;   : int
+                           }
+        control_elements : List of control elements
+        timesteps        : Time interval between each control step
+
+        TODO: How would you handle CNN 1D ?
+        &#34;&#34;&#34;
+        # Dimension of the state and action space
+        self.state_len        = config[&#34;state_elements&#34;][&#34;state_len&#34;]
+        self.action_len       = len(config[&#34;control_elements&#34;])
+        
+
+        # Assign the reward function
+        self.reward_fun       = config[&#34;reward_function&#34;]
+
+        # SWMM object
+        self.sim              = Simulation(config[&#34;swmm_input&#34;])
+        self.sim.start()
+
+        # SWMM Config
+        self.timesteps        = config[&#34;timesteps&#34;]
+        self.control_elements = config[&#34;control_elements&#34;]
+        self.state_elements   = config[&#34;state_elements&#34;]
+        
+        # methods
+        self.methods = {&#34;depth&#34;: self._getDepth, &#34;flow&#34;: self._getFlow}
+    
+    def _state(self):
+        &#34;&#34;&#34;
+        Query the states based on the state elements
+        &#34;&#34;&#34;
+        state = []
+        for i in self.state_elements[&#34;state_order&#34;]:
+            state.append(self.methods[self.state_elements[i]](i))
+        
+        state = np.asarray(state)
+        return state 
+
+    def _reward(self):
+        &#34;&#34;&#34;
+        Reward based on the user defined function 
+        &#34;&#34;&#34;
+        reward = self.reward_fun(self.sim)
+        return reward
+
+    def step(self, actions):
+        &#34;&#34;&#34;
+        Implements the control action and forwards
+        the simulation to the predefined steps 
+
+        params:
+        ----------------------------------------
+        actions  : actions to take as an array (1 x n)
+        
+        returns:
+        ----------------------------------------
+        new_state : Next state
+        reward    : Reward based on the defimed reward func.
+        done      : Terminal state
+        meta      : Any meta data you would need...
+        &#34;&#34;&#34;
+        # implement the actions
+        for asset, valve_position in zip(self.control_elements, actions):
+
+            self._setValvePosition(asset, valve_position)
+        
+        # take the step !
+        time = self.sim._model.swmm_step()
+        done = False if time &gt; 0 else True
+
+        new_state = self._state()
+        reward    = self._reward()
+
+        return new_state, reward, done
+
+
+    def reset(self):
+        &#34;&#34;&#34;
+        Resets the simulation and retuns the state 
+        &#34;&#34;&#34;
+        self.sim._model.swmm_end()
+        self.sim._model.swmm_close()
+
+        # Start the next simulation
+        self.sim._model.swmm_open()
+        self.sim._model.swmm_start()
+
+        # get the state
+        state = self._state()
+        return state
+
+
+    def _getDepth(self, ID):
+        return self.sim._model.getNodeResult(ID, 5)
+
+    def _getFlow(self, ID):
+        return self.sim._model.getLinkResult(ID, 0)
+
+    def _getInflow(self, ID):
+        pass
+
+    def _setInflow(self, ID, value):
+        pass 
+
+    def _getValvePosition(self, ID):
+        return self.sim._model.getLinkResult(ID, 6) 
+
+    def _setValvePosition(self, ID, valve):
+        self.sim._model.setLinkSetting(ID, valve) 
+
+    def _getRainfall(self, gage):
+        pass 
+
+    def _setRainfall(self, gage, value):
+        pass
+
+    def _terminate(self):
+        self.sim._model.swmm_end()
+        self.sim._model.swmm_close()
+
+    def initial_state(self):
+        return self._state()}</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="StormSwarm.environment.environment.__init__"><code class="name flex">
+<span>def <span class="ident">__init__</span></span>(<span>self, config)</span>
+</code></dt>
+<dd>
+<section class="desc"><h2 id="parmas">parmas:</h2>
+<dl>
+<dt>swmm_input
+: path to the input file</dt>
+<dt>reward_function
+: reward function based on the state.</dt>
+<dt>state_elements
+: { "state_order" : [] # Order in which states should be considered</dt>
+<dt>"node id"
+: "<depth or flow>"</dt>
+<dt>"state_len"
+: int</dt>
+<dt>}</dt>
+<dt><strong><code>control_elements</code></strong> :&ensp;<code>List</code> of <code>control</code> <code>elements</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>timesteps
+: Time interval between each control step</p>
+<dl>
+<dt><strong><code>TODO</code></strong> :&ensp;<code>How</code> <code>would</code> <code>you</code> <code>handle</code> <code>CNN</code> <code>1D</code> ?</dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def __init__(self, config):
+    &#34;&#34;&#34;
+    parmas:
+    ----------------------------------------
+    swmm_input       : path to the input file
+    reward_function  : reward function based on the state.
+    state_elements   : { &#34;state_order&#34; : [] # Order in which states should be considered
+                         &#34;node id&#34;     : &#34;&lt;depth or flow&gt;&#34;
+                         &#34;state_len&#34;   : int
+                       }
+    control_elements : List of control elements
+    timesteps        : Time interval between each control step
+
+    TODO: How would you handle CNN 1D ?
+    &#34;&#34;&#34;
+    # Dimension of the state and action space
+    self.state_len        = config[&#34;state_elements&#34;][&#34;state_len&#34;]
+    self.action_len       = len(config[&#34;control_elements&#34;])
+    
+
+    # Assign the reward function
+    self.reward_fun       = config[&#34;reward_function&#34;]
+
+    # SWMM object
+    self.sim              = Simulation(config[&#34;swmm_input&#34;])
+    self.sim.start()
+
+    # SWMM Config
+    self.timesteps        = config[&#34;timesteps&#34;]
+    self.control_elements = config[&#34;control_elements&#34;]
+    self.state_elements   = config[&#34;state_elements&#34;]
+    
+    # methods
+    self.methods = {&#34;depth&#34;: self._getDepth, &#34;flow&#34;: self._getFlow}}</code></pre>
+</details>
+</dd>
+<dt id="StormSwarm.environment.environment.initial_state"><code class="name flex">
+<span>def <span class="ident">initial_state</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def initial_state(self):
+    return self._state()}</code></pre>
+</details>
+</dd>
+<dt id="StormSwarm.environment.environment.reset"><code class="name flex">
+<span>def <span class="ident">reset</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Resets the simulation and retuns the state</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def reset(self):
+    &#34;&#34;&#34;
+    Resets the simulation and retuns the state 
+    &#34;&#34;&#34;
+    self.sim._model.swmm_end()
+    self.sim._model.swmm_close()
+
+    # Start the next simulation
+    self.sim._model.swmm_open()
+    self.sim._model.swmm_start()
+
+    # get the state
+    state = self._state()
+    return state}</code></pre>
+</details>
+</dd>
+<dt id="StormSwarm.environment.environment.step"><code class="name flex">
+<span>def <span class="ident">step</span></span>(<span>self, actions)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Implements the control action and forwards
+the simulation to the predefined steps </p>
+<h2 id="params">params:</h2>
+<p>actions
+: actions to take as an array (1 x n)</p>
+<h2 id="returns">returns:</h2>
+<dl>
+<dt><strong><code>new_state</code></strong> :&ensp;<code>Next</code> <code>state</code></dt>
+<dd>&nbsp;</dd>
+</dl>
+<p>reward
+: Reward based on the defimed reward func.
+done
+: Terminal state
+meta
+: Any meta data you would need&hellip;</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def step(self, actions):
+    &#34;&#34;&#34;
+    Implements the control action and forwards
+    the simulation to the predefined steps 
+
+    params:
+    ----------------------------------------
+    actions  : actions to take as an array (1 x n)
+    
+    returns:
+    ----------------------------------------
+    new_state : Next state
+    reward    : Reward based on the defimed reward func.
+    done      : Terminal state
+    meta      : Any meta data you would need...
+    &#34;&#34;&#34;
+    # implement the actions
+    for asset, valve_position in zip(self.control_elements, actions):
+
+        self._setValvePosition(asset, valve_position)
+    
+    # take the step !
+    time = self.sim._model.swmm_step()
+    done = False if time &gt; 0 else True
+
+    new_state = self._state()
+    reward    = self._reward()
+
+    return new_state, reward, done}</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="StormSwarm" href="index.html">StormSwarm</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="StormSwarm.environment.environment" href="#StormSwarm.environment.environment">environment</a></code></h4>
+<ul class="">
+<li><code><a title="StormSwarm.environment.environment.__init__" href="#StormSwarm.environment.environment.__init__">__init__</a></code></li>
+<li><code><a title="StormSwarm.environment.environment.initial_state" href="#StormSwarm.environment.environment.initial_state">initial_state</a></code></li>
+<li><code><a title="StormSwarm.environment.environment.reset" href="#StormSwarm.environment.environment.reset">reset</a></code></li>
+<li><code><a title="StormSwarm.environment.environment.step" href="#StormSwarm.environment.environment.step">step</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.5.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

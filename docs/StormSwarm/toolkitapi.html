@@ -1,0 +1,2495 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.5.1" />
+<title>StormSwarm.toolkitapi API documentation</title>
+<meta name="description" content="SWMM Object Enum." />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id=^header-]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:1px solid #ddd;margin:1em 0 1em 4ch}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}#index .two-column{column-count:2}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.name small{font-weight:normal}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary{background:#ffc;font-weight:400;font-size:.8em;width:11em;text-transform:uppercase;padding:0px 8px;border:1px solid #fd6;border-radius:5px;cursor:pointer}.source summary:hover{background:#fe9 !important}.source[open] summary{background:#fda}.source pre{max-height:500px;overflow-y:scroll;margin-bottom:15px}.hlist{list-syle:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink;]</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a,a:visited{text-decoration:underline}a[href]:after{content:" (" attr(href) ")"}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title"><code>StormSwarm.toolkitapi</code> module</h1>
+</header>
+<section id="section-intro">
+<p>SWMM Object Enum.</p>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python"># -*- coding: utf-8 -*-
+# -----------------------------------------------------------------------------
+# Copyright (c) 2014 Bryant E. McDonnell
+#
+# Licensed under the terms of the BSD2 License
+# See LICENSE.txt for details
+# -----------------------------------------------------------------------------
+&#34;&#34;&#34;SWMM Object Enum.&#34;&#34;&#34;
+
+# Standard library imports
+from enum import Enum
+import ctypes
+
+
+class SimulationTime(Enum):
+    StartDateTime = 0
+    EndDateTime = 1
+    ReportStart = 2
+
+
+class SimulationUnits(Enum):
+    UnitSystem = 0  # (0-US, 1-SI)
+    FlowUnits = 1
+
+
+class SimAnalysisSettings(Enum):
+    AllowPonding = 0  # No ponding at nodes
+    SkipSteadyState = 1  # Do flow routing in steady state periods
+    IgnoreRainfall = 2  # Analyze rainfall/runoff
+    IgnoreRDII = 3  # Analyze RDII
+    IgnoreSnowmelt = 4  # Analyze snowmelt
+    IgnoreGwater = 5  # Analyze groundwater
+    IgnoreRouting = 6  # Analyze flow routing
+    IgnoreQuality = 7  # Analyze water quality
+
+
+class SimulationParameters(Enum):
+    RouteStep = 0  # Routing time step (sec)
+    MinRouteStep = 1  # Minimum variable time step (sec)
+    LengtheningStep = 2  # Time step for lengthening (sec)
+    StartDryDays = 3  # Antecedent dry days
+    CourantFactor = 4  # Courant time step factor
+    MinSurfArea = 5  # Minimum nodal surface area
+    MinSlope = 6  # Minimum conduit slope
+    RunoffError = 7  # Runoff continuity error
+    GwaterError = 8  # Groundwater continuity error
+    FlowError = 9  # Flow routing error
+    QualError = 10  # Quality routing error
+    HeadTol = 11  # DW routing head tolerance (ft)
+    SysFlowTol = 12  # Tolerance for steady system flow
+    LatFlowTol = 13  # Tolerance for steady nodal inflow
+
+
+class ObjectType(Enum):
+    GAGE = 0  # rain gage
+    SUBCATCH = 1  # subcatchment
+    NODE = 2  # conveyance system node
+    LINK = 3  # conveyance system link
+    POLLUT = 4  # pollutant
+    LANDUSE = 5  # land use category
+    TIMEPATTERN = 6  # dry weather flow time pattern
+    CURVE = 7  # generic table of values
+    TSERIES = 8  # generic time series of values
+    CONTROL = 9  # conveyance system control rules
+    TRANSECT = 10  # irregular channel cross-section
+    AQUIFER = 11  # groundwater aquifer
+    UNITHYD = 12  # RDII unit hydrograph
+    SNOWMELT = 13  # snowmelt parameter set
+    SHAPE = 14  # custom conduit shape
+    LID = 15  # LID treatment units
+    MAX_OBJ_TYPES = 16  # MaximumObjectTypes
+
+
+class NodeParams(Enum):
+    invertElev = 0  # double
+    fullDepth = 1  # double
+    surDepth = 2  # double
+    pondedArea = 3  # double
+    initDepth = 4  # double
+
+
+class NodeResults(Enum):
+    totalinflow = 0  # Total Inflow
+    outflow = 1  # Total Outflow
+    losses = 2  # Losses (evap + exfiltration loss)
+    newVolume = 3  # Current Volume
+    overflow = 4  # overflow
+    newDepth = 5  # Current water depth
+    newHead = 6  # Current water head
+    newLatFlow = 7  # Current Lateral Inflow
+
+
+class NodeType(Enum):
+    junction = 0  # Junction Type
+    outfall = 1  # Outfall Type
+    storage = 2  # Storage Type
+    divider = 3  # Divider Type
+
+
+class LinkParams(Enum):
+    offset1 = 0  # double
+    offset2 = 1  # double
+    q0 = 2  # double
+    qLimit = 3  # double
+    cLossInlet = 4  # double
+    cLossOutlet = 5  # double
+    cLossAvg = 6  # double
+    seepRate = 7  # double
+
+
+class LinkResults(Enum):
+    newFlow = 0  # double
+    newDepth = 1  # double
+    newVolume = 2  # double
+    surfArea1 = 3  # double
+    surfArea2 = 4  # double
+    setting = 5  # double
+    targetSetting = 6  # double
+    froude = 7  # double
+
+
+class LinkType(Enum):
+    conduit = 0  # Conduit Type
+    pump = 1  # Pump Type
+    orifice = 2  # Orifice Type
+    weir = 3  # Weir Type
+    outlet = 4  # Outlet Type
+
+
+class SubcParams(Enum):
+    width = 0  # double
+    area = 1  # double
+    fracImperv = 2  # double
+    slope = 3  # double
+    curbLength = 4  # double
+    # initBuildup = 5  # double
+
+
+class SubcResults(Enum):
+    rainfall = 0  # Current Rainfall
+    evapLoss = 1  # Current Evaporation Loss
+    infilLoss = 2  # Current Infiltration Loss
+    runon = 3  # Subcatchment Runon
+    newRunoff = 4  # Current Runoff
+    newSnowDepth = 5  # Current Snow Depth
+
+
+class NodeStats(ctypes.Structure):
+    _fields_ = [
+        (&#34;avgDepth&#34;, ctypes.c_double), (&#34;maxDepth&#34;, ctypes.c_double),
+        (&#34;maxDepthDate&#34;, ctypes.c_double), (&#34;maxRptDepth&#34;, ctypes.c_double),
+        (&#34;volFlooded&#34;, ctypes.c_double), (&#34;timeFlooded&#34;, ctypes.c_double),
+        (&#34;timeSurcharged&#34;, ctypes.c_double),
+        (&#34;timeCourantCritical&#34;, ctypes.c_double),
+        (&#34;totLatFlow&#34;, ctypes.c_double), (&#34;maxLatFlow&#34;, ctypes.c_double),
+        (&#34;maxInflow&#34;, ctypes.c_double), (&#34;maxOverflow&#34;, ctypes.c_double),
+        (&#34;maxPondedVol&#34;, ctypes.c_double), (&#34;maxInflowDate&#34;, ctypes.c_double),
+        (&#34;maxOverflowDate&#34;, ctypes.c_double)
+    ]
+    _py_alias_ids = {
+        &#34;avgDepth&#34;: &#34;average_depth&#34;,
+        &#34;maxDepth&#34;: &#34;max_depth&#34;,
+        &#34;maxDepthDate&#34;: &#34;max_depth_date&#34;,
+        &#34;maxRptDepth&#34;: &#34;max_report_depth&#34;,
+        &#34;volFlooded&#34;: &#34;flooding_volume&#34;,
+        &#34;timeFlooded&#34;: &#34;flooding_duration&#34;,
+        &#34;timeSurcharged&#34;: &#34;surcharge_duration&#34;,
+        &#34;timeCourantCritical&#34;: &#34;courant_crit_duration&#34;,
+        &#34;totLatFlow&#34;: &#34;lateral_infow_vol&#34;,
+        &#34;maxLatFlow&#34;: &#34;peak_lateral_inflowrate&#34;,
+        &#34;maxInflow&#34;: &#34;peak_total_inflow&#34;,
+        &#34;maxOverflow&#34;: &#34;peak_flooding_rate&#34;,
+        &#34;maxPondedVol&#34;: &#34;max_ponded_volume&#34;,
+        &#34;maxInflowDate&#34;: &#34;max_inflow_date&#34;,
+        &#34;maxOverflowDate&#34;: &#34;max_flooding_date&#34;
+    }
+
+
+class StorageStats(ctypes.Structure):
+    _fields_ = [(&#34;initVol&#34;, ctypes.c_double), (&#34;avgVol&#34;, ctypes.c_double),
+                (&#34;maxVol&#34;, ctypes.c_double), (&#34;maxFlow&#34;, ctypes.c_double),
+                (&#34;evapLosses&#34;, ctypes.c_double),
+                (&#34;exfilLosses&#34;, ctypes.c_double),
+                (&#34;maxVolDate&#34;, ctypes.c_double)]
+    _py_alias_ids = {
+        &#34;initVol&#34;: &#34;initial_volume&#34;,
+        &#34;avgVol&#34;: &#34;average_volume&#34;,
+        &#34;maxVol&#34;: &#34;max_volume&#34;,
+        &#34;maxFlow&#34;: &#34;peak_flowrate&#34;,
+        &#34;evapLosses&#34;: &#34;evap_loss&#34;,
+        &#34;exfilLosses&#34;: &#34;exfil_loss&#34;,
+        &#34;maxVolDate&#34;: &#34;max_vol_date&#34;
+    }
+
+
+PollutArray = ctypes.POINTER(ctypes.c_double)
+
+
+class OutfallStats(ctypes.Structure):
+    _fields_ = [(&#34;avgFlow&#34;, ctypes.c_double), (&#34;maxFlow&#34;, ctypes.c_double),
+                (&#34;totalLoad&#34;, PollutArray), (&#34;totalPeriods&#34;, ctypes.c_int)]
+    _py_alias_ids = {
+        &#34;avgFlow&#34;: &#34;average_flowrate&#34;,
+        &#34;maxFlow&#34;: &#34;peak_flowrate&#34;,
+        &#34;totalLoad&#34;: &#34;pollutant_loading&#34;,
+        &#34;totalPeriods&#34;: &#34;total_periods&#34;
+    }
+
+
+FlowClassArray = ctypes.c_double * 7
+
+
+class LinkStats(ctypes.Structure):
+    _fields_ = [(&#34;maxFlow&#34;, ctypes.c_double), (&#34;maxFlowDate&#34;, ctypes.c_double),
+                (&#34;maxVeloc&#34;, ctypes.c_double), (&#34;maxDepth&#34;, ctypes.c_double),
+                (&#34;timeNormalFlow&#34;, ctypes.c_double),
+                (&#34;timeInletControl&#34;, ctypes.c_double),
+                (&#34;timeSurcharged&#34;, ctypes.c_double),
+                (&#34;timeFullUpstream&#34;, ctypes.c_double),
+                (&#34;timeFullDnstream&#34;, ctypes.c_double),
+                (&#34;timeFullFlow&#34;, ctypes.c_double),
+                (&#34;timeCapacityLimited&#34;, ctypes.c_double),
+                (&#34;timeInFlowClass&#34;, FlowClassArray),
+                (&#34;timeCourantCritical&#34;, ctypes.c_double),
+                (&#34;flowTurns&#34;, ctypes.c_long), (&#34;flowTurnSign&#34;, ctypes.c_int)]
+    _py_alias_ids = {
+        &#34;maxFlow&#34;: &#34;peak_flow&#34;,
+        &#34;maxFlowDate&#34;: &#34;peak_flow_date&#34;,
+        &#34;maxVeloc&#34;: &#34;peak_velocity&#34;,
+        &#34;maxDepth&#34;: &#34;peak_depth&#34;,
+        &#34;timeNormalFlow&#34;: &#34;time_normal_flow&#34;,
+        &#34;timeInletControl&#34;: &#34;time_inlet_control&#34;,
+        &#34;timeSurcharged&#34;: &#34;time_surcharged&#34;,
+        &#34;timeFullUpstream&#34;: &#34;time_full_upstream&#34;,
+        &#34;timeFullDnstream&#34;: &#34;time_full_downstream&#34;,
+        &#34;timeFullFlow&#34;: &#34;time_full_flow&#34;,
+        &#34;timeCapacityLimited&#34;: &#34;time_capacity_limited&#34;,
+        &#34;timeInFlowClass&#34;: &#34;time_in_flow_class&#34;,
+        &#34;timeCourantCritical&#34;: &#34;time_courant_crit&#34;,
+        &#34;flowTurns&#34;: &#34;flow_turns&#34;,
+        &#34;flowTurnSign&#34;: &#34;flow_turn_sign&#34;
+    }
+
+
+class PumpStats(ctypes.Structure):
+    _fields_ = [
+        (&#34;utilized&#34;, ctypes.c_double),
+        (&#34;minFlow&#34;, ctypes.c_double),
+        (&#34;avgFlow&#34;, ctypes.c_double),
+        (&#34;maxFlow&#34;, ctypes.c_double),
+        (&#34;volume&#34;, ctypes.c_double),
+        (&#34;energy&#34;, ctypes.c_double),
+        (&#34;offCurveLow&#34;, ctypes.c_double),
+        (&#34;offCurveHigh&#34;, ctypes.c_double),
+        (&#34;startUps&#34;, ctypes.c_int),
+        (&#34;totalPeriods&#34;, ctypes.c_int),
+    ]
+    _py_alias_ids = {
+        &#34;utilized&#34;: &#34;percent_utilized&#34;,
+        &#34;minFlow&#34;: &#34;min_flowrate&#34;,
+        &#34;avgFlow&#34;: &#34;average_flowrate&#34;,
+        &#34;maxFlow&#34;: &#34;max_flowrate&#34;,
+        &#34;volume&#34;: &#34;total_volume&#34;,
+        &#34;energy&#34;: &#34;energy_consumed&#34;,
+        &#34;offCurveLow&#34;: &#34;off_curve_low&#34;,
+        &#34;offCurveHigh&#34;: &#34;off_curve_high&#34;,
+        &#34;startUps&#34;: &#34;number_startups&#34;,
+        &#34;totalPeriods&#34;: &#34;total_periods&#34;
+    }
+
+
+class SubcStats(ctypes.Structure):
+    _fields_ = [(&#34;precip&#34;, ctypes.c_double), (&#34;runon&#34;, ctypes.c_double),
+                (&#34;evap&#34;, ctypes.c_double), (&#34;infil&#34;, ctypes.c_double),
+                (&#34;runoff&#34;, ctypes.c_double), (&#34;maxFlow&#34;, ctypes.c_double),
+                (&#34;surfaceBuildup&#34;, PollutArray)]
+    _py_alias_ids = {
+        &#34;precip&#34;: &#34;precipitation&#34;,
+        &#34;runon&#34;: &#34;runon&#34;,
+        &#34;evap&#34;: &#34;evaporation&#34;,
+        &#34;infil&#34;: &#34;infiltration&#34;,
+        &#34;runoff&#34;: &#34;runoff&#34;,
+        &#34;maxFlow&#34;: &#34;peak_runoff_rate&#34;,
+        &#34;surfaceBuildup&#34;: &#34;pollutant_buildup&#34;
+    }
+
+
+class RoutingTotals(ctypes.Structure):
+    _fields_ = [(&#34;dwInflow&#34;, ctypes.c_double), (&#34;wwInflow&#34;, ctypes.c_double),
+                (&#34;gwInflow&#34;, ctypes.c_double), (&#34;iiInflow&#34;, ctypes.c_double),
+                (&#34;exInflow&#34;, ctypes.c_double), (&#34;flooding&#34;, ctypes.c_double),
+                (&#34;outflow&#34;, ctypes.c_double), (&#34;evapLoss&#34;, ctypes.c_double),
+                (&#34;seepLoss&#34;, ctypes.c_double), (&#34;reacted&#34;, ctypes.c_double),
+                (&#34;initStorage&#34;, ctypes.c_double),
+                (&#34;finalStorage&#34;, ctypes.c_double),
+                (&#34;pctError&#34;, ctypes.c_double)]
+    _py_alias_ids = {
+        &#34;dwInflow&#34;: &#34;dry_weather_inflow&#34;,
+        &#34;wwInflow&#34;: &#34;wet_weather_inflow&#34;,
+        &#34;gwInflow&#34;: &#34;groundwater_inflow&#34;,
+        &#34;iiInflow&#34;: &#34;II_inflow&#34;,
+        &#34;exInflow&#34;: &#34;external_inflow&#34;,
+        &#34;flooding&#34;: &#34;flooding&#34;,
+        &#34;outflow&#34;: &#34;outflow&#34;,
+        &#34;evapLoss&#34;: &#34;evaporation_loss&#34;,
+        &#34;seepLoss&#34;: &#34;seepage_loss&#34;,
+        &#34;reacted&#34;: &#34;reacted&#34;,
+        &#34;initStorage&#34;: &#34;initial_storage&#34;,
+        &#34;finalStorage&#34;: &#34;final_storage&#34;,
+        &#34;pctError&#34;: &#34;routing_error&#34;
+    }
+
+
+class RunoffTotals(ctypes.Structure):
+    _fields_ = [
+        (&#34;rainfall&#34;, ctypes.c_double), (&#34;evap&#34;, ctypes.c_double),
+        (&#34;infil&#34;, ctypes.c_double), (&#34;runoff&#34;, ctypes.c_double),
+        (&#34;drains&#34;, ctypes.c_double), (&#34;runon&#34;, ctypes.c_double),
+        (&#34;initStorage&#34;, ctypes.c_double), (&#34;finalStorage&#34;, ctypes.c_double),
+        (&#34;initSnowCover&#34;, ctypes.c_double),
+        (&#34;finalSnowCover&#34;, ctypes.c_double), (&#34;snowRemoved&#34;, ctypes.c_double),
+        (&#34;pctError&#34;, ctypes.c_double)
+    ]
+    _py_alias_ids = {
+        &#34;rainfall&#34;: &#34;rainfall&#34;,
+        &#34;evap&#34;: &#34;evaporation&#34;,
+        &#34;infil&#34;: &#34;infiltration&#34;,
+        &#34;runoff&#34;: &#34;runoff&#34;,
+        &#34;drains&#34;: &#34;drains&#34;,
+        &#34;runon&#34;: &#34;runon&#34;,
+        &#34;initStorage&#34;: &#34;init_storage&#34;,
+        &#34;finalStorage&#34;: &#34;final_storage&#34;,
+        &#34;initSnowCover&#34;: &#34;init_snow_cover&#34;,
+        &#34;finalSnowCover&#34;: &#34;final_snow_cover&#34;,
+        &#34;snowRemoved&#34;: &#34;snow_removed&#34;,
+        &#34;pctError&#34;: &#34;routing_error&#34;
+    }
+
+
+# --- SWMM Output API
+# -----------------------------------------------------------------------------
+DLLErrorKeys = {
+    411: &#34;Input Error 411: no memory allocated for results.&#34;,
+    412: &#34;Input Error 412: no results; binary file hasn&#39;t been opened.&#34;,
+    421: &#34;Input Error 421: invalid parameter code.&#34;,
+    434: &#34;File Error  434: unable to open binary output file.&#34;,
+    435: &#34;File Error  435: run terminated; no results in binary file.&#34;,
+    441: &#34;Error 441: need to call SMR_open before calling this function&#34;
+}
+
+
+class SMO_elementCount(Enum):
+    subcatchCount = 0
+    nodeCount = 1
+    linkCount = 2
+    pollutantCount = 3
+
+
+class SMO_unit(Enum):
+    flow_rate = 0
+    concentration = 1
+
+
+class SMO_apiFunction(Enum):
+    getAttribute = 0
+    getResult = 1
+
+
+class SMO_elementType(Enum):
+    SM_subcatch = 0
+    SM_node = 1
+    SM_link = 2
+    SM_sys = 3
+
+
+class SMO_time(Enum):
+    reportStep = 0
+    numPeriods = 1
+
+
+class SMO_subcatchAttribute(Enum):
+    rainfall_subcatch = 0
+    snow_depth_subcatch = 1
+    evap_loss = 2
+    infil_loss = 3
+    runoff_rate = 4
+    gwoutflow_rate = 5
+    gwtable_elev = 6
+    soil_moisture = 7
+    pollutant_conc_subcatch = 8
+
+
+class SMO_nodeAttribute(Enum):
+    invert_depth = 0
+    hydraulic_head = 1
+    stored_ponded_volume = 2
+    lateral_inflow = 3
+    total_inflow = 4
+    flooding_losses = 5
+    pollutant_conc_node = 6
+
+
+class SMO_linkAttribute(Enum):
+    flow_rate_link = 0
+    flow_depth = 1
+    flow_velocity = 2
+    flow_volume = 3
+    capacity = 4
+    pollutant_conc_link = 5
+
+
+class SMO_systemAttribute(Enum):
+    air_temp = 0
+    rainfall_system = 1
+    snow_depth_system = 2
+    evap_infil_loss = 3
+    runoff_flow = 4
+    dry_weather_inflow = 5
+    groundwater_inflow = 6
+    RDII_inflow = 7
+    direct_inflow = 8
+    total_lateral_inflow = 9
+    flood_losses = 10
+    outfall_flows = 11
+    volume_stored = 12
+    evap_rate = 13}</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="StormSwarm.toolkitapi.LinkParams"><code class="flex name class">
+<span>class <span class="ident">LinkParams</span></span>
+<span>(</span><span><small>ancestors:</small> enum.Enum)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>An enumeration.</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class LinkParams(Enum):
+    offset1 = 0  # double
+    offset2 = 1  # double
+    q0 = 2  # double
+    qLimit = 3  # double
+    cLossInlet = 4  # double
+    cLossOutlet = 5  # double
+    cLossAvg = 6  # double
+    seepRate = 7  # double}</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.LinkParams.cLossAvg"><code class="name">var <span class="ident">cLossAvg</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkParams.cLossInlet"><code class="name">var <span class="ident">cLossInlet</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkParams.cLossOutlet"><code class="name">var <span class="ident">cLossOutlet</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkParams.offset1"><code class="name">var <span class="ident">offset1</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkParams.offset2"><code class="name">var <span class="ident">offset2</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkParams.q0"><code class="name">var <span class="ident">q0</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkParams.qLimit"><code class="name">var <span class="ident">qLimit</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkParams.seepRate"><code class="name">var <span class="ident">seepRate</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkResults"><code class="flex name class">
+<span>class <span class="ident">LinkResults</span></span>
+<span>(</span><span><small>ancestors:</small> enum.Enum)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>An enumeration.</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class LinkResults(Enum):
+    newFlow = 0  # double
+    newDepth = 1  # double
+    newVolume = 2  # double
+    surfArea1 = 3  # double
+    surfArea2 = 4  # double
+    setting = 5  # double
+    targetSetting = 6  # double
+    froude = 7  # double}</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.LinkResults.froude"><code class="name">var <span class="ident">froude</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkResults.newDepth"><code class="name">var <span class="ident">newDepth</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkResults.newFlow"><code class="name">var <span class="ident">newFlow</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkResults.newVolume"><code class="name">var <span class="ident">newVolume</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkResults.setting"><code class="name">var <span class="ident">setting</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkResults.surfArea1"><code class="name">var <span class="ident">surfArea1</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkResults.surfArea2"><code class="name">var <span class="ident">surfArea2</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkResults.targetSetting"><code class="name">var <span class="ident">targetSetting</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkStats"><code class="flex name class">
+<span>class <span class="ident">LinkStats</span></span>
+<span>(</span><span><small>ancestors:</small> _ctypes.Structure, _ctypes._CData)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Structure base class</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class LinkStats(ctypes.Structure):
+    _fields_ = [(&#34;maxFlow&#34;, ctypes.c_double), (&#34;maxFlowDate&#34;, ctypes.c_double),
+                (&#34;maxVeloc&#34;, ctypes.c_double), (&#34;maxDepth&#34;, ctypes.c_double),
+                (&#34;timeNormalFlow&#34;, ctypes.c_double),
+                (&#34;timeInletControl&#34;, ctypes.c_double),
+                (&#34;timeSurcharged&#34;, ctypes.c_double),
+                (&#34;timeFullUpstream&#34;, ctypes.c_double),
+                (&#34;timeFullDnstream&#34;, ctypes.c_double),
+                (&#34;timeFullFlow&#34;, ctypes.c_double),
+                (&#34;timeCapacityLimited&#34;, ctypes.c_double),
+                (&#34;timeInFlowClass&#34;, FlowClassArray),
+                (&#34;timeCourantCritical&#34;, ctypes.c_double),
+                (&#34;flowTurns&#34;, ctypes.c_long), (&#34;flowTurnSign&#34;, ctypes.c_int)]
+    _py_alias_ids = {
+        &#34;maxFlow&#34;: &#34;peak_flow&#34;,
+        &#34;maxFlowDate&#34;: &#34;peak_flow_date&#34;,
+        &#34;maxVeloc&#34;: &#34;peak_velocity&#34;,
+        &#34;maxDepth&#34;: &#34;peak_depth&#34;,
+        &#34;timeNormalFlow&#34;: &#34;time_normal_flow&#34;,
+        &#34;timeInletControl&#34;: &#34;time_inlet_control&#34;,
+        &#34;timeSurcharged&#34;: &#34;time_surcharged&#34;,
+        &#34;timeFullUpstream&#34;: &#34;time_full_upstream&#34;,
+        &#34;timeFullDnstream&#34;: &#34;time_full_downstream&#34;,
+        &#34;timeFullFlow&#34;: &#34;time_full_flow&#34;,
+        &#34;timeCapacityLimited&#34;: &#34;time_capacity_limited&#34;,
+        &#34;timeInFlowClass&#34;: &#34;time_in_flow_class&#34;,
+        &#34;timeCourantCritical&#34;: &#34;time_courant_crit&#34;,
+        &#34;flowTurns&#34;: &#34;flow_turns&#34;,
+        &#34;flowTurnSign&#34;: &#34;flow_turn_sign&#34;
+    }}</code></pre>
+</details>
+<h3>Instance variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.LinkStats.flowTurnSign"><code class="name">var <span class="ident">flowTurnSign</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkStats.flowTurns"><code class="name">var <span class="ident">flowTurns</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkStats.maxDepth"><code class="name">var <span class="ident">maxDepth</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkStats.maxFlow"><code class="name">var <span class="ident">maxFlow</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkStats.maxFlowDate"><code class="name">var <span class="ident">maxFlowDate</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkStats.maxVeloc"><code class="name">var <span class="ident">maxVeloc</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkStats.timeCapacityLimited"><code class="name">var <span class="ident">timeCapacityLimited</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkStats.timeCourantCritical"><code class="name">var <span class="ident">timeCourantCritical</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkStats.timeFullDnstream"><code class="name">var <span class="ident">timeFullDnstream</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkStats.timeFullFlow"><code class="name">var <span class="ident">timeFullFlow</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkStats.timeFullUpstream"><code class="name">var <span class="ident">timeFullUpstream</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkStats.timeInFlowClass"><code class="name">var <span class="ident">timeInFlowClass</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkStats.timeInletControl"><code class="name">var <span class="ident">timeInletControl</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkStats.timeNormalFlow"><code class="name">var <span class="ident">timeNormalFlow</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkStats.timeSurcharged"><code class="name">var <span class="ident">timeSurcharged</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkType"><code class="flex name class">
+<span>class <span class="ident">LinkType</span></span>
+<span>(</span><span><small>ancestors:</small> enum.Enum)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>An enumeration.</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class LinkType(Enum):
+    conduit = 0  # Conduit Type
+    pump = 1  # Pump Type
+    orifice = 2  # Orifice Type
+    weir = 3  # Weir Type
+    outlet = 4  # Outlet Type}</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.LinkType.conduit"><code class="name">var <span class="ident">conduit</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkType.orifice"><code class="name">var <span class="ident">orifice</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkType.outlet"><code class="name">var <span class="ident">outlet</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkType.pump"><code class="name">var <span class="ident">pump</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.LinkType.weir"><code class="name">var <span class="ident">weir</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeParams"><code class="flex name class">
+<span>class <span class="ident">NodeParams</span></span>
+<span>(</span><span><small>ancestors:</small> enum.Enum)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>An enumeration.</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class NodeParams(Enum):
+    invertElev = 0  # double
+    fullDepth = 1  # double
+    surDepth = 2  # double
+    pondedArea = 3  # double
+    initDepth = 4  # double}</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.NodeParams.fullDepth"><code class="name">var <span class="ident">fullDepth</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeParams.initDepth"><code class="name">var <span class="ident">initDepth</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeParams.invertElev"><code class="name">var <span class="ident">invertElev</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeParams.pondedArea"><code class="name">var <span class="ident">pondedArea</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeParams.surDepth"><code class="name">var <span class="ident">surDepth</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeResults"><code class="flex name class">
+<span>class <span class="ident">NodeResults</span></span>
+<span>(</span><span><small>ancestors:</small> enum.Enum)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>An enumeration.</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class NodeResults(Enum):
+    totalinflow = 0  # Total Inflow
+    outflow = 1  # Total Outflow
+    losses = 2  # Losses (evap + exfiltration loss)
+    newVolume = 3  # Current Volume
+    overflow = 4  # overflow
+    newDepth = 5  # Current water depth
+    newHead = 6  # Current water head
+    newLatFlow = 7  # Current Lateral Inflow}</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.NodeResults.losses"><code class="name">var <span class="ident">losses</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeResults.newDepth"><code class="name">var <span class="ident">newDepth</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeResults.newHead"><code class="name">var <span class="ident">newHead</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeResults.newLatFlow"><code class="name">var <span class="ident">newLatFlow</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeResults.newVolume"><code class="name">var <span class="ident">newVolume</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeResults.outflow"><code class="name">var <span class="ident">outflow</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeResults.overflow"><code class="name">var <span class="ident">overflow</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeResults.totalinflow"><code class="name">var <span class="ident">totalinflow</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeStats"><code class="flex name class">
+<span>class <span class="ident">NodeStats</span></span>
+<span>(</span><span><small>ancestors:</small> _ctypes.Structure, _ctypes._CData)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Structure base class</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class NodeStats(ctypes.Structure):
+    _fields_ = [
+        (&#34;avgDepth&#34;, ctypes.c_double), (&#34;maxDepth&#34;, ctypes.c_double),
+        (&#34;maxDepthDate&#34;, ctypes.c_double), (&#34;maxRptDepth&#34;, ctypes.c_double),
+        (&#34;volFlooded&#34;, ctypes.c_double), (&#34;timeFlooded&#34;, ctypes.c_double),
+        (&#34;timeSurcharged&#34;, ctypes.c_double),
+        (&#34;timeCourantCritical&#34;, ctypes.c_double),
+        (&#34;totLatFlow&#34;, ctypes.c_double), (&#34;maxLatFlow&#34;, ctypes.c_double),
+        (&#34;maxInflow&#34;, ctypes.c_double), (&#34;maxOverflow&#34;, ctypes.c_double),
+        (&#34;maxPondedVol&#34;, ctypes.c_double), (&#34;maxInflowDate&#34;, ctypes.c_double),
+        (&#34;maxOverflowDate&#34;, ctypes.c_double)
+    ]
+    _py_alias_ids = {
+        &#34;avgDepth&#34;: &#34;average_depth&#34;,
+        &#34;maxDepth&#34;: &#34;max_depth&#34;,
+        &#34;maxDepthDate&#34;: &#34;max_depth_date&#34;,
+        &#34;maxRptDepth&#34;: &#34;max_report_depth&#34;,
+        &#34;volFlooded&#34;: &#34;flooding_volume&#34;,
+        &#34;timeFlooded&#34;: &#34;flooding_duration&#34;,
+        &#34;timeSurcharged&#34;: &#34;surcharge_duration&#34;,
+        &#34;timeCourantCritical&#34;: &#34;courant_crit_duration&#34;,
+        &#34;totLatFlow&#34;: &#34;lateral_infow_vol&#34;,
+        &#34;maxLatFlow&#34;: &#34;peak_lateral_inflowrate&#34;,
+        &#34;maxInflow&#34;: &#34;peak_total_inflow&#34;,
+        &#34;maxOverflow&#34;: &#34;peak_flooding_rate&#34;,
+        &#34;maxPondedVol&#34;: &#34;max_ponded_volume&#34;,
+        &#34;maxInflowDate&#34;: &#34;max_inflow_date&#34;,
+        &#34;maxOverflowDate&#34;: &#34;max_flooding_date&#34;
+    }}</code></pre>
+</details>
+<h3>Instance variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.NodeStats.avgDepth"><code class="name">var <span class="ident">avgDepth</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeStats.maxDepth"><code class="name">var <span class="ident">maxDepth</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeStats.maxDepthDate"><code class="name">var <span class="ident">maxDepthDate</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeStats.maxInflow"><code class="name">var <span class="ident">maxInflow</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeStats.maxInflowDate"><code class="name">var <span class="ident">maxInflowDate</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeStats.maxLatFlow"><code class="name">var <span class="ident">maxLatFlow</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeStats.maxOverflow"><code class="name">var <span class="ident">maxOverflow</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeStats.maxOverflowDate"><code class="name">var <span class="ident">maxOverflowDate</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeStats.maxPondedVol"><code class="name">var <span class="ident">maxPondedVol</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeStats.maxRptDepth"><code class="name">var <span class="ident">maxRptDepth</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeStats.timeCourantCritical"><code class="name">var <span class="ident">timeCourantCritical</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeStats.timeFlooded"><code class="name">var <span class="ident">timeFlooded</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeStats.timeSurcharged"><code class="name">var <span class="ident">timeSurcharged</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeStats.totLatFlow"><code class="name">var <span class="ident">totLatFlow</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeStats.volFlooded"><code class="name">var <span class="ident">volFlooded</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeType"><code class="flex name class">
+<span>class <span class="ident">NodeType</span></span>
+<span>(</span><span><small>ancestors:</small> enum.Enum)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>An enumeration.</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class NodeType(Enum):
+    junction = 0  # Junction Type
+    outfall = 1  # Outfall Type
+    storage = 2  # Storage Type
+    divider = 3  # Divider Type}</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.NodeType.divider"><code class="name">var <span class="ident">divider</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeType.junction"><code class="name">var <span class="ident">junction</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeType.outfall"><code class="name">var <span class="ident">outfall</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.NodeType.storage"><code class="name">var <span class="ident">storage</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.ObjectType"><code class="flex name class">
+<span>class <span class="ident">ObjectType</span></span>
+<span>(</span><span><small>ancestors:</small> enum.Enum)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>An enumeration.</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class ObjectType(Enum):
+    GAGE = 0  # rain gage
+    SUBCATCH = 1  # subcatchment
+    NODE = 2  # conveyance system node
+    LINK = 3  # conveyance system link
+    POLLUT = 4  # pollutant
+    LANDUSE = 5  # land use category
+    TIMEPATTERN = 6  # dry weather flow time pattern
+    CURVE = 7  # generic table of values
+    TSERIES = 8  # generic time series of values
+    CONTROL = 9  # conveyance system control rules
+    TRANSECT = 10  # irregular channel cross-section
+    AQUIFER = 11  # groundwater aquifer
+    UNITHYD = 12  # RDII unit hydrograph
+    SNOWMELT = 13  # snowmelt parameter set
+    SHAPE = 14  # custom conduit shape
+    LID = 15  # LID treatment units
+    MAX_OBJ_TYPES = 16  # MaximumObjectTypes}</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.ObjectType.AQUIFER"><code class="name">var <span class="ident">AQUIFER</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.ObjectType.CONTROL"><code class="name">var <span class="ident">CONTROL</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.ObjectType.CURVE"><code class="name">var <span class="ident">CURVE</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.ObjectType.GAGE"><code class="name">var <span class="ident">GAGE</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.ObjectType.LANDUSE"><code class="name">var <span class="ident">LANDUSE</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.ObjectType.LID"><code class="name">var <span class="ident">LID</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.ObjectType.LINK"><code class="name">var <span class="ident">LINK</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.ObjectType.MAX_OBJ_TYPES"><code class="name">var <span class="ident">MAX_OBJ_TYPES</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.ObjectType.NODE"><code class="name">var <span class="ident">NODE</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.ObjectType.POLLUT"><code class="name">var <span class="ident">POLLUT</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.ObjectType.SHAPE"><code class="name">var <span class="ident">SHAPE</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.ObjectType.SNOWMELT"><code class="name">var <span class="ident">SNOWMELT</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.ObjectType.SUBCATCH"><code class="name">var <span class="ident">SUBCATCH</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.ObjectType.TIMEPATTERN"><code class="name">var <span class="ident">TIMEPATTERN</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.ObjectType.TRANSECT"><code class="name">var <span class="ident">TRANSECT</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.ObjectType.TSERIES"><code class="name">var <span class="ident">TSERIES</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.ObjectType.UNITHYD"><code class="name">var <span class="ident">UNITHYD</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.OutfallStats"><code class="flex name class">
+<span>class <span class="ident">OutfallStats</span></span>
+<span>(</span><span><small>ancestors:</small> _ctypes.Structure, _ctypes._CData)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Structure base class</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class OutfallStats(ctypes.Structure):
+    _fields_ = [(&#34;avgFlow&#34;, ctypes.c_double), (&#34;maxFlow&#34;, ctypes.c_double),
+                (&#34;totalLoad&#34;, PollutArray), (&#34;totalPeriods&#34;, ctypes.c_int)]
+    _py_alias_ids = {
+        &#34;avgFlow&#34;: &#34;average_flowrate&#34;,
+        &#34;maxFlow&#34;: &#34;peak_flowrate&#34;,
+        &#34;totalLoad&#34;: &#34;pollutant_loading&#34;,
+        &#34;totalPeriods&#34;: &#34;total_periods&#34;
+    }}</code></pre>
+</details>
+<h3>Instance variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.OutfallStats.avgFlow"><code class="name">var <span class="ident">avgFlow</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.OutfallStats.maxFlow"><code class="name">var <span class="ident">maxFlow</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.OutfallStats.totalLoad"><code class="name">var <span class="ident">totalLoad</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.OutfallStats.totalPeriods"><code class="name">var <span class="ident">totalPeriods</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.PumpStats"><code class="flex name class">
+<span>class <span class="ident">PumpStats</span></span>
+<span>(</span><span><small>ancestors:</small> _ctypes.Structure, _ctypes._CData)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Structure base class</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class PumpStats(ctypes.Structure):
+    _fields_ = [
+        (&#34;utilized&#34;, ctypes.c_double),
+        (&#34;minFlow&#34;, ctypes.c_double),
+        (&#34;avgFlow&#34;, ctypes.c_double),
+        (&#34;maxFlow&#34;, ctypes.c_double),
+        (&#34;volume&#34;, ctypes.c_double),
+        (&#34;energy&#34;, ctypes.c_double),
+        (&#34;offCurveLow&#34;, ctypes.c_double),
+        (&#34;offCurveHigh&#34;, ctypes.c_double),
+        (&#34;startUps&#34;, ctypes.c_int),
+        (&#34;totalPeriods&#34;, ctypes.c_int),
+    ]
+    _py_alias_ids = {
+        &#34;utilized&#34;: &#34;percent_utilized&#34;,
+        &#34;minFlow&#34;: &#34;min_flowrate&#34;,
+        &#34;avgFlow&#34;: &#34;average_flowrate&#34;,
+        &#34;maxFlow&#34;: &#34;max_flowrate&#34;,
+        &#34;volume&#34;: &#34;total_volume&#34;,
+        &#34;energy&#34;: &#34;energy_consumed&#34;,
+        &#34;offCurveLow&#34;: &#34;off_curve_low&#34;,
+        &#34;offCurveHigh&#34;: &#34;off_curve_high&#34;,
+        &#34;startUps&#34;: &#34;number_startups&#34;,
+        &#34;totalPeriods&#34;: &#34;total_periods&#34;
+    }}</code></pre>
+</details>
+<h3>Instance variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.PumpStats.avgFlow"><code class="name">var <span class="ident">avgFlow</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.PumpStats.energy"><code class="name">var <span class="ident">energy</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.PumpStats.maxFlow"><code class="name">var <span class="ident">maxFlow</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.PumpStats.minFlow"><code class="name">var <span class="ident">minFlow</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.PumpStats.offCurveHigh"><code class="name">var <span class="ident">offCurveHigh</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.PumpStats.offCurveLow"><code class="name">var <span class="ident">offCurveLow</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.PumpStats.startUps"><code class="name">var <span class="ident">startUps</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.PumpStats.totalPeriods"><code class="name">var <span class="ident">totalPeriods</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.PumpStats.utilized"><code class="name">var <span class="ident">utilized</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.PumpStats.volume"><code class="name">var <span class="ident">volume</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.RoutingTotals"><code class="flex name class">
+<span>class <span class="ident">RoutingTotals</span></span>
+<span>(</span><span><small>ancestors:</small> _ctypes.Structure, _ctypes._CData)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Structure base class</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class RoutingTotals(ctypes.Structure):
+    _fields_ = [(&#34;dwInflow&#34;, ctypes.c_double), (&#34;wwInflow&#34;, ctypes.c_double),
+                (&#34;gwInflow&#34;, ctypes.c_double), (&#34;iiInflow&#34;, ctypes.c_double),
+                (&#34;exInflow&#34;, ctypes.c_double), (&#34;flooding&#34;, ctypes.c_double),
+                (&#34;outflow&#34;, ctypes.c_double), (&#34;evapLoss&#34;, ctypes.c_double),
+                (&#34;seepLoss&#34;, ctypes.c_double), (&#34;reacted&#34;, ctypes.c_double),
+                (&#34;initStorage&#34;, ctypes.c_double),
+                (&#34;finalStorage&#34;, ctypes.c_double),
+                (&#34;pctError&#34;, ctypes.c_double)]
+    _py_alias_ids = {
+        &#34;dwInflow&#34;: &#34;dry_weather_inflow&#34;,
+        &#34;wwInflow&#34;: &#34;wet_weather_inflow&#34;,
+        &#34;gwInflow&#34;: &#34;groundwater_inflow&#34;,
+        &#34;iiInflow&#34;: &#34;II_inflow&#34;,
+        &#34;exInflow&#34;: &#34;external_inflow&#34;,
+        &#34;flooding&#34;: &#34;flooding&#34;,
+        &#34;outflow&#34;: &#34;outflow&#34;,
+        &#34;evapLoss&#34;: &#34;evaporation_loss&#34;,
+        &#34;seepLoss&#34;: &#34;seepage_loss&#34;,
+        &#34;reacted&#34;: &#34;reacted&#34;,
+        &#34;initStorage&#34;: &#34;initial_storage&#34;,
+        &#34;finalStorage&#34;: &#34;final_storage&#34;,
+        &#34;pctError&#34;: &#34;routing_error&#34;
+    }}</code></pre>
+</details>
+<h3>Instance variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.RoutingTotals.dwInflow"><code class="name">var <span class="ident">dwInflow</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.RoutingTotals.evapLoss"><code class="name">var <span class="ident">evapLoss</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.RoutingTotals.exInflow"><code class="name">var <span class="ident">exInflow</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.RoutingTotals.finalStorage"><code class="name">var <span class="ident">finalStorage</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.RoutingTotals.flooding"><code class="name">var <span class="ident">flooding</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.RoutingTotals.gwInflow"><code class="name">var <span class="ident">gwInflow</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.RoutingTotals.iiInflow"><code class="name">var <span class="ident">iiInflow</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.RoutingTotals.initStorage"><code class="name">var <span class="ident">initStorage</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.RoutingTotals.outflow"><code class="name">var <span class="ident">outflow</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.RoutingTotals.pctError"><code class="name">var <span class="ident">pctError</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.RoutingTotals.reacted"><code class="name">var <span class="ident">reacted</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.RoutingTotals.seepLoss"><code class="name">var <span class="ident">seepLoss</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.RoutingTotals.wwInflow"><code class="name">var <span class="ident">wwInflow</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.RunoffTotals"><code class="flex name class">
+<span>class <span class="ident">RunoffTotals</span></span>
+<span>(</span><span><small>ancestors:</small> _ctypes.Structure, _ctypes._CData)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Structure base class</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class RunoffTotals(ctypes.Structure):
+    _fields_ = [
+        (&#34;rainfall&#34;, ctypes.c_double), (&#34;evap&#34;, ctypes.c_double),
+        (&#34;infil&#34;, ctypes.c_double), (&#34;runoff&#34;, ctypes.c_double),
+        (&#34;drains&#34;, ctypes.c_double), (&#34;runon&#34;, ctypes.c_double),
+        (&#34;initStorage&#34;, ctypes.c_double), (&#34;finalStorage&#34;, ctypes.c_double),
+        (&#34;initSnowCover&#34;, ctypes.c_double),
+        (&#34;finalSnowCover&#34;, ctypes.c_double), (&#34;snowRemoved&#34;, ctypes.c_double),
+        (&#34;pctError&#34;, ctypes.c_double)
+    ]
+    _py_alias_ids = {
+        &#34;rainfall&#34;: &#34;rainfall&#34;,
+        &#34;evap&#34;: &#34;evaporation&#34;,
+        &#34;infil&#34;: &#34;infiltration&#34;,
+        &#34;runoff&#34;: &#34;runoff&#34;,
+        &#34;drains&#34;: &#34;drains&#34;,
+        &#34;runon&#34;: &#34;runon&#34;,
+        &#34;initStorage&#34;: &#34;init_storage&#34;,
+        &#34;finalStorage&#34;: &#34;final_storage&#34;,
+        &#34;initSnowCover&#34;: &#34;init_snow_cover&#34;,
+        &#34;finalSnowCover&#34;: &#34;final_snow_cover&#34;,
+        &#34;snowRemoved&#34;: &#34;snow_removed&#34;,
+        &#34;pctError&#34;: &#34;routing_error&#34;
+    }}</code></pre>
+</details>
+<h3>Instance variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.RunoffTotals.drains"><code class="name">var <span class="ident">drains</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.RunoffTotals.evap"><code class="name">var <span class="ident">evap</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.RunoffTotals.finalSnowCover"><code class="name">var <span class="ident">finalSnowCover</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.RunoffTotals.finalStorage"><code class="name">var <span class="ident">finalStorage</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.RunoffTotals.infil"><code class="name">var <span class="ident">infil</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.RunoffTotals.initSnowCover"><code class="name">var <span class="ident">initSnowCover</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.RunoffTotals.initStorage"><code class="name">var <span class="ident">initStorage</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.RunoffTotals.pctError"><code class="name">var <span class="ident">pctError</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.RunoffTotals.rainfall"><code class="name">var <span class="ident">rainfall</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.RunoffTotals.runoff"><code class="name">var <span class="ident">runoff</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.RunoffTotals.runon"><code class="name">var <span class="ident">runon</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.RunoffTotals.snowRemoved"><code class="name">var <span class="ident">snowRemoved</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_apiFunction"><code class="flex name class">
+<span>class <span class="ident">SMO_apiFunction</span></span>
+<span>(</span><span><small>ancestors:</small> enum.Enum)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>An enumeration.</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class SMO_apiFunction(Enum):
+    getAttribute = 0
+    getResult = 1}</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.SMO_apiFunction.getAttribute"><code class="name">var <span class="ident">getAttribute</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_apiFunction.getResult"><code class="name">var <span class="ident">getResult</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_elementCount"><code class="flex name class">
+<span>class <span class="ident">SMO_elementCount</span></span>
+<span>(</span><span><small>ancestors:</small> enum.Enum)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>An enumeration.</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class SMO_elementCount(Enum):
+    subcatchCount = 0
+    nodeCount = 1
+    linkCount = 2
+    pollutantCount = 3}</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.SMO_elementCount.linkCount"><code class="name">var <span class="ident">linkCount</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_elementCount.nodeCount"><code class="name">var <span class="ident">nodeCount</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_elementCount.pollutantCount"><code class="name">var <span class="ident">pollutantCount</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_elementCount.subcatchCount"><code class="name">var <span class="ident">subcatchCount</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_elementType"><code class="flex name class">
+<span>class <span class="ident">SMO_elementType</span></span>
+<span>(</span><span><small>ancestors:</small> enum.Enum)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>An enumeration.</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class SMO_elementType(Enum):
+    SM_subcatch = 0
+    SM_node = 1
+    SM_link = 2
+    SM_sys = 3}</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.SMO_elementType.SM_link"><code class="name">var <span class="ident">SM_link</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_elementType.SM_node"><code class="name">var <span class="ident">SM_node</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_elementType.SM_subcatch"><code class="name">var <span class="ident">SM_subcatch</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_elementType.SM_sys"><code class="name">var <span class="ident">SM_sys</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_linkAttribute"><code class="flex name class">
+<span>class <span class="ident">SMO_linkAttribute</span></span>
+<span>(</span><span><small>ancestors:</small> enum.Enum)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>An enumeration.</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class SMO_linkAttribute(Enum):
+    flow_rate_link = 0
+    flow_depth = 1
+    flow_velocity = 2
+    flow_volume = 3
+    capacity = 4
+    pollutant_conc_link = 5}</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.SMO_linkAttribute.capacity"><code class="name">var <span class="ident">capacity</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_linkAttribute.flow_depth"><code class="name">var <span class="ident">flow_depth</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_linkAttribute.flow_rate_link"><code class="name">var <span class="ident">flow_rate_link</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_linkAttribute.flow_velocity"><code class="name">var <span class="ident">flow_velocity</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_linkAttribute.flow_volume"><code class="name">var <span class="ident">flow_volume</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_linkAttribute.pollutant_conc_link"><code class="name">var <span class="ident">pollutant_conc_link</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_nodeAttribute"><code class="flex name class">
+<span>class <span class="ident">SMO_nodeAttribute</span></span>
+<span>(</span><span><small>ancestors:</small> enum.Enum)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>An enumeration.</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class SMO_nodeAttribute(Enum):
+    invert_depth = 0
+    hydraulic_head = 1
+    stored_ponded_volume = 2
+    lateral_inflow = 3
+    total_inflow = 4
+    flooding_losses = 5
+    pollutant_conc_node = 6}</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.SMO_nodeAttribute.flooding_losses"><code class="name">var <span class="ident">flooding_losses</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_nodeAttribute.hydraulic_head"><code class="name">var <span class="ident">hydraulic_head</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_nodeAttribute.invert_depth"><code class="name">var <span class="ident">invert_depth</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_nodeAttribute.lateral_inflow"><code class="name">var <span class="ident">lateral_inflow</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_nodeAttribute.pollutant_conc_node"><code class="name">var <span class="ident">pollutant_conc_node</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_nodeAttribute.stored_ponded_volume"><code class="name">var <span class="ident">stored_ponded_volume</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_nodeAttribute.total_inflow"><code class="name">var <span class="ident">total_inflow</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_subcatchAttribute"><code class="flex name class">
+<span>class <span class="ident">SMO_subcatchAttribute</span></span>
+<span>(</span><span><small>ancestors:</small> enum.Enum)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>An enumeration.</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class SMO_subcatchAttribute(Enum):
+    rainfall_subcatch = 0
+    snow_depth_subcatch = 1
+    evap_loss = 2
+    infil_loss = 3
+    runoff_rate = 4
+    gwoutflow_rate = 5
+    gwtable_elev = 6
+    soil_moisture = 7
+    pollutant_conc_subcatch = 8}</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.SMO_subcatchAttribute.evap_loss"><code class="name">var <span class="ident">evap_loss</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_subcatchAttribute.gwoutflow_rate"><code class="name">var <span class="ident">gwoutflow_rate</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_subcatchAttribute.gwtable_elev"><code class="name">var <span class="ident">gwtable_elev</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_subcatchAttribute.infil_loss"><code class="name">var <span class="ident">infil_loss</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_subcatchAttribute.pollutant_conc_subcatch"><code class="name">var <span class="ident">pollutant_conc_subcatch</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_subcatchAttribute.rainfall_subcatch"><code class="name">var <span class="ident">rainfall_subcatch</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_subcatchAttribute.runoff_rate"><code class="name">var <span class="ident">runoff_rate</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_subcatchAttribute.snow_depth_subcatch"><code class="name">var <span class="ident">snow_depth_subcatch</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_subcatchAttribute.soil_moisture"><code class="name">var <span class="ident">soil_moisture</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_systemAttribute"><code class="flex name class">
+<span>class <span class="ident">SMO_systemAttribute</span></span>
+<span>(</span><span><small>ancestors:</small> enum.Enum)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>An enumeration.</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class SMO_systemAttribute(Enum):
+    air_temp = 0
+    rainfall_system = 1
+    snow_depth_system = 2
+    evap_infil_loss = 3
+    runoff_flow = 4
+    dry_weather_inflow = 5
+    groundwater_inflow = 6
+    RDII_inflow = 7
+    direct_inflow = 8
+    total_lateral_inflow = 9
+    flood_losses = 10
+    outfall_flows = 11
+    volume_stored = 12
+    evap_rate = 13}</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.SMO_systemAttribute.RDII_inflow"><code class="name">var <span class="ident">RDII_inflow</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_systemAttribute.air_temp"><code class="name">var <span class="ident">air_temp</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_systemAttribute.direct_inflow"><code class="name">var <span class="ident">direct_inflow</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_systemAttribute.dry_weather_inflow"><code class="name">var <span class="ident">dry_weather_inflow</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_systemAttribute.evap_infil_loss"><code class="name">var <span class="ident">evap_infil_loss</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_systemAttribute.evap_rate"><code class="name">var <span class="ident">evap_rate</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_systemAttribute.flood_losses"><code class="name">var <span class="ident">flood_losses</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_systemAttribute.groundwater_inflow"><code class="name">var <span class="ident">groundwater_inflow</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_systemAttribute.outfall_flows"><code class="name">var <span class="ident">outfall_flows</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_systemAttribute.rainfall_system"><code class="name">var <span class="ident">rainfall_system</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_systemAttribute.runoff_flow"><code class="name">var <span class="ident">runoff_flow</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_systemAttribute.snow_depth_system"><code class="name">var <span class="ident">snow_depth_system</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_systemAttribute.total_lateral_inflow"><code class="name">var <span class="ident">total_lateral_inflow</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_systemAttribute.volume_stored"><code class="name">var <span class="ident">volume_stored</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_time"><code class="flex name class">
+<span>class <span class="ident">SMO_time</span></span>
+<span>(</span><span><small>ancestors:</small> enum.Enum)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>An enumeration.</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class SMO_time(Enum):
+    reportStep = 0
+    numPeriods = 1}</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.SMO_time.numPeriods"><code class="name">var <span class="ident">numPeriods</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_time.reportStep"><code class="name">var <span class="ident">reportStep</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_unit"><code class="flex name class">
+<span>class <span class="ident">SMO_unit</span></span>
+<span>(</span><span><small>ancestors:</small> enum.Enum)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>An enumeration.</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class SMO_unit(Enum):
+    flow_rate = 0
+    concentration = 1}</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.SMO_unit.concentration"><code class="name">var <span class="ident">concentration</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SMO_unit.flow_rate"><code class="name">var <span class="ident">flow_rate</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimAnalysisSettings"><code class="flex name class">
+<span>class <span class="ident">SimAnalysisSettings</span></span>
+<span>(</span><span><small>ancestors:</small> enum.Enum)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>An enumeration.</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class SimAnalysisSettings(Enum):
+    AllowPonding = 0  # No ponding at nodes
+    SkipSteadyState = 1  # Do flow routing in steady state periods
+    IgnoreRainfall = 2  # Analyze rainfall/runoff
+    IgnoreRDII = 3  # Analyze RDII
+    IgnoreSnowmelt = 4  # Analyze snowmelt
+    IgnoreGwater = 5  # Analyze groundwater
+    IgnoreRouting = 6  # Analyze flow routing
+    IgnoreQuality = 7  # Analyze water quality}</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.SimAnalysisSettings.AllowPonding"><code class="name">var <span class="ident">AllowPonding</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimAnalysisSettings.IgnoreGwater"><code class="name">var <span class="ident">IgnoreGwater</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimAnalysisSettings.IgnoreQuality"><code class="name">var <span class="ident">IgnoreQuality</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimAnalysisSettings.IgnoreRDII"><code class="name">var <span class="ident">IgnoreRDII</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimAnalysisSettings.IgnoreRainfall"><code class="name">var <span class="ident">IgnoreRainfall</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimAnalysisSettings.IgnoreRouting"><code class="name">var <span class="ident">IgnoreRouting</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimAnalysisSettings.IgnoreSnowmelt"><code class="name">var <span class="ident">IgnoreSnowmelt</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimAnalysisSettings.SkipSteadyState"><code class="name">var <span class="ident">SkipSteadyState</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimulationParameters"><code class="flex name class">
+<span>class <span class="ident">SimulationParameters</span></span>
+<span>(</span><span><small>ancestors:</small> enum.Enum)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>An enumeration.</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class SimulationParameters(Enum):
+    RouteStep = 0  # Routing time step (sec)
+    MinRouteStep = 1  # Minimum variable time step (sec)
+    LengtheningStep = 2  # Time step for lengthening (sec)
+    StartDryDays = 3  # Antecedent dry days
+    CourantFactor = 4  # Courant time step factor
+    MinSurfArea = 5  # Minimum nodal surface area
+    MinSlope = 6  # Minimum conduit slope
+    RunoffError = 7  # Runoff continuity error
+    GwaterError = 8  # Groundwater continuity error
+    FlowError = 9  # Flow routing error
+    QualError = 10  # Quality routing error
+    HeadTol = 11  # DW routing head tolerance (ft)
+    SysFlowTol = 12  # Tolerance for steady system flow
+    LatFlowTol = 13  # Tolerance for steady nodal inflow}</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.SimulationParameters.CourantFactor"><code class="name">var <span class="ident">CourantFactor</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimulationParameters.FlowError"><code class="name">var <span class="ident">FlowError</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimulationParameters.GwaterError"><code class="name">var <span class="ident">GwaterError</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimulationParameters.HeadTol"><code class="name">var <span class="ident">HeadTol</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimulationParameters.LatFlowTol"><code class="name">var <span class="ident">LatFlowTol</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimulationParameters.LengtheningStep"><code class="name">var <span class="ident">LengtheningStep</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimulationParameters.MinRouteStep"><code class="name">var <span class="ident">MinRouteStep</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimulationParameters.MinSlope"><code class="name">var <span class="ident">MinSlope</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimulationParameters.MinSurfArea"><code class="name">var <span class="ident">MinSurfArea</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimulationParameters.QualError"><code class="name">var <span class="ident">QualError</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimulationParameters.RouteStep"><code class="name">var <span class="ident">RouteStep</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimulationParameters.RunoffError"><code class="name">var <span class="ident">RunoffError</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimulationParameters.StartDryDays"><code class="name">var <span class="ident">StartDryDays</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimulationParameters.SysFlowTol"><code class="name">var <span class="ident">SysFlowTol</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimulationTime"><code class="flex name class">
+<span>class <span class="ident">SimulationTime</span></span>
+<span>(</span><span><small>ancestors:</small> enum.Enum)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>An enumeration.</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class SimulationTime(Enum):
+    StartDateTime = 0
+    EndDateTime = 1
+    ReportStart = 2}</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.SimulationTime.EndDateTime"><code class="name">var <span class="ident">EndDateTime</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimulationTime.ReportStart"><code class="name">var <span class="ident">ReportStart</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimulationTime.StartDateTime"><code class="name">var <span class="ident">StartDateTime</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimulationUnits"><code class="flex name class">
+<span>class <span class="ident">SimulationUnits</span></span>
+<span>(</span><span><small>ancestors:</small> enum.Enum)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>An enumeration.</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class SimulationUnits(Enum):
+    UnitSystem = 0  # (0-US, 1-SI)
+    FlowUnits = 1}</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.SimulationUnits.FlowUnits"><code class="name">var <span class="ident">FlowUnits</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SimulationUnits.UnitSystem"><code class="name">var <span class="ident">UnitSystem</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.StorageStats"><code class="flex name class">
+<span>class <span class="ident">StorageStats</span></span>
+<span>(</span><span><small>ancestors:</small> _ctypes.Structure, _ctypes._CData)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Structure base class</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class StorageStats(ctypes.Structure):
+    _fields_ = [(&#34;initVol&#34;, ctypes.c_double), (&#34;avgVol&#34;, ctypes.c_double),
+                (&#34;maxVol&#34;, ctypes.c_double), (&#34;maxFlow&#34;, ctypes.c_double),
+                (&#34;evapLosses&#34;, ctypes.c_double),
+                (&#34;exfilLosses&#34;, ctypes.c_double),
+                (&#34;maxVolDate&#34;, ctypes.c_double)]
+    _py_alias_ids = {
+        &#34;initVol&#34;: &#34;initial_volume&#34;,
+        &#34;avgVol&#34;: &#34;average_volume&#34;,
+        &#34;maxVol&#34;: &#34;max_volume&#34;,
+        &#34;maxFlow&#34;: &#34;peak_flowrate&#34;,
+        &#34;evapLosses&#34;: &#34;evap_loss&#34;,
+        &#34;exfilLosses&#34;: &#34;exfil_loss&#34;,
+        &#34;maxVolDate&#34;: &#34;max_vol_date&#34;
+    }}</code></pre>
+</details>
+<h3>Instance variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.StorageStats.avgVol"><code class="name">var <span class="ident">avgVol</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.StorageStats.evapLosses"><code class="name">var <span class="ident">evapLosses</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.StorageStats.exfilLosses"><code class="name">var <span class="ident">exfilLosses</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.StorageStats.initVol"><code class="name">var <span class="ident">initVol</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.StorageStats.maxFlow"><code class="name">var <span class="ident">maxFlow</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.StorageStats.maxVol"><code class="name">var <span class="ident">maxVol</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.StorageStats.maxVolDate"><code class="name">var <span class="ident">maxVolDate</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.SubcParams"><code class="flex name class">
+<span>class <span class="ident">SubcParams</span></span>
+<span>(</span><span><small>ancestors:</small> enum.Enum)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>An enumeration.</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class SubcParams(Enum):
+    width = 0  # double
+    area = 1  # double
+    fracImperv = 2  # double
+    slope = 3  # double
+    curbLength = 4  # double}</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.SubcParams.area"><code class="name">var <span class="ident">area</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SubcParams.curbLength"><code class="name">var <span class="ident">curbLength</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SubcParams.fracImperv"><code class="name">var <span class="ident">fracImperv</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SubcParams.slope"><code class="name">var <span class="ident">slope</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SubcParams.width"><code class="name">var <span class="ident">width</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.SubcResults"><code class="flex name class">
+<span>class <span class="ident">SubcResults</span></span>
+<span>(</span><span><small>ancestors:</small> enum.Enum)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>An enumeration.</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class SubcResults(Enum):
+    rainfall = 0  # Current Rainfall
+    evapLoss = 1  # Current Evaporation Loss
+    infilLoss = 2  # Current Infiltration Loss
+    runon = 3  # Subcatchment Runon
+    newRunoff = 4  # Current Runoff
+    newSnowDepth = 5  # Current Snow Depth}</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.SubcResults.evapLoss"><code class="name">var <span class="ident">evapLoss</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SubcResults.infilLoss"><code class="name">var <span class="ident">infilLoss</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SubcResults.newRunoff"><code class="name">var <span class="ident">newRunoff</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SubcResults.newSnowDepth"><code class="name">var <span class="ident">newSnowDepth</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SubcResults.rainfall"><code class="name">var <span class="ident">rainfall</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SubcResults.runon"><code class="name">var <span class="ident">runon</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+</dd>
+<dt id="StormSwarm.toolkitapi.SubcStats"><code class="flex name class">
+<span>class <span class="ident">SubcStats</span></span>
+<span>(</span><span><small>ancestors:</small> _ctypes.Structure, _ctypes._CData)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Structure base class</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class SubcStats(ctypes.Structure):
+    _fields_ = [(&#34;precip&#34;, ctypes.c_double), (&#34;runon&#34;, ctypes.c_double),
+                (&#34;evap&#34;, ctypes.c_double), (&#34;infil&#34;, ctypes.c_double),
+                (&#34;runoff&#34;, ctypes.c_double), (&#34;maxFlow&#34;, ctypes.c_double),
+                (&#34;surfaceBuildup&#34;, PollutArray)]
+    _py_alias_ids = {
+        &#34;precip&#34;: &#34;precipitation&#34;,
+        &#34;runon&#34;: &#34;runon&#34;,
+        &#34;evap&#34;: &#34;evaporation&#34;,
+        &#34;infil&#34;: &#34;infiltration&#34;,
+        &#34;runoff&#34;: &#34;runoff&#34;,
+        &#34;maxFlow&#34;: &#34;peak_runoff_rate&#34;,
+        &#34;surfaceBuildup&#34;: &#34;pollutant_buildup&#34;
+    }}</code></pre>
+</details>
+<h3>Instance variables</h3>
+<dl>
+<dt id="StormSwarm.toolkitapi.SubcStats.evap"><code class="name">var <span class="ident">evap</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SubcStats.infil"><code class="name">var <span class="ident">infil</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SubcStats.maxFlow"><code class="name">var <span class="ident">maxFlow</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SubcStats.precip"><code class="name">var <span class="ident">precip</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SubcStats.runoff"><code class="name">var <span class="ident">runoff</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SubcStats.runon"><code class="name">var <span class="ident">runon</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+<dt id="StormSwarm.toolkitapi.SubcStats.surfaceBuildup"><code class="name">var <span class="ident">surfaceBuildup</span></code></dt>
+<dd>
+<section class="desc"><p>Structure/Union member</p></section>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="StormSwarm" href="index.html">StormSwarm</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.LinkParams" href="#StormSwarm.toolkitapi.LinkParams">LinkParams</a></code></h4>
+<ul class="two-column">
+<li><code><a title="StormSwarm.toolkitapi.LinkParams.cLossAvg" href="#StormSwarm.toolkitapi.LinkParams.cLossAvg">cLossAvg</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkParams.cLossInlet" href="#StormSwarm.toolkitapi.LinkParams.cLossInlet">cLossInlet</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkParams.cLossOutlet" href="#StormSwarm.toolkitapi.LinkParams.cLossOutlet">cLossOutlet</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkParams.offset1" href="#StormSwarm.toolkitapi.LinkParams.offset1">offset1</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkParams.offset2" href="#StormSwarm.toolkitapi.LinkParams.offset2">offset2</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkParams.q0" href="#StormSwarm.toolkitapi.LinkParams.q0">q0</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkParams.qLimit" href="#StormSwarm.toolkitapi.LinkParams.qLimit">qLimit</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkParams.seepRate" href="#StormSwarm.toolkitapi.LinkParams.seepRate">seepRate</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.LinkResults" href="#StormSwarm.toolkitapi.LinkResults">LinkResults</a></code></h4>
+<ul class="two-column">
+<li><code><a title="StormSwarm.toolkitapi.LinkResults.froude" href="#StormSwarm.toolkitapi.LinkResults.froude">froude</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkResults.newDepth" href="#StormSwarm.toolkitapi.LinkResults.newDepth">newDepth</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkResults.newFlow" href="#StormSwarm.toolkitapi.LinkResults.newFlow">newFlow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkResults.newVolume" href="#StormSwarm.toolkitapi.LinkResults.newVolume">newVolume</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkResults.setting" href="#StormSwarm.toolkitapi.LinkResults.setting">setting</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkResults.surfArea1" href="#StormSwarm.toolkitapi.LinkResults.surfArea1">surfArea1</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkResults.surfArea2" href="#StormSwarm.toolkitapi.LinkResults.surfArea2">surfArea2</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkResults.targetSetting" href="#StormSwarm.toolkitapi.LinkResults.targetSetting">targetSetting</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.LinkStats" href="#StormSwarm.toolkitapi.LinkStats">LinkStats</a></code></h4>
+<ul class="two-column">
+<li><code><a title="StormSwarm.toolkitapi.LinkStats.flowTurnSign" href="#StormSwarm.toolkitapi.LinkStats.flowTurnSign">flowTurnSign</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkStats.flowTurns" href="#StormSwarm.toolkitapi.LinkStats.flowTurns">flowTurns</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkStats.maxDepth" href="#StormSwarm.toolkitapi.LinkStats.maxDepth">maxDepth</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkStats.maxFlow" href="#StormSwarm.toolkitapi.LinkStats.maxFlow">maxFlow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkStats.maxFlowDate" href="#StormSwarm.toolkitapi.LinkStats.maxFlowDate">maxFlowDate</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkStats.maxVeloc" href="#StormSwarm.toolkitapi.LinkStats.maxVeloc">maxVeloc</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkStats.timeCapacityLimited" href="#StormSwarm.toolkitapi.LinkStats.timeCapacityLimited">timeCapacityLimited</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkStats.timeCourantCritical" href="#StormSwarm.toolkitapi.LinkStats.timeCourantCritical">timeCourantCritical</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkStats.timeFullDnstream" href="#StormSwarm.toolkitapi.LinkStats.timeFullDnstream">timeFullDnstream</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkStats.timeFullFlow" href="#StormSwarm.toolkitapi.LinkStats.timeFullFlow">timeFullFlow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkStats.timeFullUpstream" href="#StormSwarm.toolkitapi.LinkStats.timeFullUpstream">timeFullUpstream</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkStats.timeInFlowClass" href="#StormSwarm.toolkitapi.LinkStats.timeInFlowClass">timeInFlowClass</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkStats.timeInletControl" href="#StormSwarm.toolkitapi.LinkStats.timeInletControl">timeInletControl</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkStats.timeNormalFlow" href="#StormSwarm.toolkitapi.LinkStats.timeNormalFlow">timeNormalFlow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkStats.timeSurcharged" href="#StormSwarm.toolkitapi.LinkStats.timeSurcharged">timeSurcharged</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.LinkType" href="#StormSwarm.toolkitapi.LinkType">LinkType</a></code></h4>
+<ul class="">
+<li><code><a title="StormSwarm.toolkitapi.LinkType.conduit" href="#StormSwarm.toolkitapi.LinkType.conduit">conduit</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkType.orifice" href="#StormSwarm.toolkitapi.LinkType.orifice">orifice</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkType.outlet" href="#StormSwarm.toolkitapi.LinkType.outlet">outlet</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkType.pump" href="#StormSwarm.toolkitapi.LinkType.pump">pump</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.LinkType.weir" href="#StormSwarm.toolkitapi.LinkType.weir">weir</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.NodeParams" href="#StormSwarm.toolkitapi.NodeParams">NodeParams</a></code></h4>
+<ul class="">
+<li><code><a title="StormSwarm.toolkitapi.NodeParams.fullDepth" href="#StormSwarm.toolkitapi.NodeParams.fullDepth">fullDepth</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeParams.initDepth" href="#StormSwarm.toolkitapi.NodeParams.initDepth">initDepth</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeParams.invertElev" href="#StormSwarm.toolkitapi.NodeParams.invertElev">invertElev</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeParams.pondedArea" href="#StormSwarm.toolkitapi.NodeParams.pondedArea">pondedArea</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeParams.surDepth" href="#StormSwarm.toolkitapi.NodeParams.surDepth">surDepth</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.NodeResults" href="#StormSwarm.toolkitapi.NodeResults">NodeResults</a></code></h4>
+<ul class="two-column">
+<li><code><a title="StormSwarm.toolkitapi.NodeResults.losses" href="#StormSwarm.toolkitapi.NodeResults.losses">losses</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeResults.newDepth" href="#StormSwarm.toolkitapi.NodeResults.newDepth">newDepth</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeResults.newHead" href="#StormSwarm.toolkitapi.NodeResults.newHead">newHead</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeResults.newLatFlow" href="#StormSwarm.toolkitapi.NodeResults.newLatFlow">newLatFlow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeResults.newVolume" href="#StormSwarm.toolkitapi.NodeResults.newVolume">newVolume</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeResults.outflow" href="#StormSwarm.toolkitapi.NodeResults.outflow">outflow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeResults.overflow" href="#StormSwarm.toolkitapi.NodeResults.overflow">overflow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeResults.totalinflow" href="#StormSwarm.toolkitapi.NodeResults.totalinflow">totalinflow</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.NodeStats" href="#StormSwarm.toolkitapi.NodeStats">NodeStats</a></code></h4>
+<ul class="two-column">
+<li><code><a title="StormSwarm.toolkitapi.NodeStats.avgDepth" href="#StormSwarm.toolkitapi.NodeStats.avgDepth">avgDepth</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeStats.maxDepth" href="#StormSwarm.toolkitapi.NodeStats.maxDepth">maxDepth</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeStats.maxDepthDate" href="#StormSwarm.toolkitapi.NodeStats.maxDepthDate">maxDepthDate</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeStats.maxInflow" href="#StormSwarm.toolkitapi.NodeStats.maxInflow">maxInflow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeStats.maxInflowDate" href="#StormSwarm.toolkitapi.NodeStats.maxInflowDate">maxInflowDate</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeStats.maxLatFlow" href="#StormSwarm.toolkitapi.NodeStats.maxLatFlow">maxLatFlow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeStats.maxOverflow" href="#StormSwarm.toolkitapi.NodeStats.maxOverflow">maxOverflow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeStats.maxOverflowDate" href="#StormSwarm.toolkitapi.NodeStats.maxOverflowDate">maxOverflowDate</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeStats.maxPondedVol" href="#StormSwarm.toolkitapi.NodeStats.maxPondedVol">maxPondedVol</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeStats.maxRptDepth" href="#StormSwarm.toolkitapi.NodeStats.maxRptDepth">maxRptDepth</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeStats.timeCourantCritical" href="#StormSwarm.toolkitapi.NodeStats.timeCourantCritical">timeCourantCritical</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeStats.timeFlooded" href="#StormSwarm.toolkitapi.NodeStats.timeFlooded">timeFlooded</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeStats.timeSurcharged" href="#StormSwarm.toolkitapi.NodeStats.timeSurcharged">timeSurcharged</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeStats.totLatFlow" href="#StormSwarm.toolkitapi.NodeStats.totLatFlow">totLatFlow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeStats.volFlooded" href="#StormSwarm.toolkitapi.NodeStats.volFlooded">volFlooded</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.NodeType" href="#StormSwarm.toolkitapi.NodeType">NodeType</a></code></h4>
+<ul class="">
+<li><code><a title="StormSwarm.toolkitapi.NodeType.divider" href="#StormSwarm.toolkitapi.NodeType.divider">divider</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeType.junction" href="#StormSwarm.toolkitapi.NodeType.junction">junction</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeType.outfall" href="#StormSwarm.toolkitapi.NodeType.outfall">outfall</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.NodeType.storage" href="#StormSwarm.toolkitapi.NodeType.storage">storage</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.ObjectType" href="#StormSwarm.toolkitapi.ObjectType">ObjectType</a></code></h4>
+<ul class="two-column">
+<li><code><a title="StormSwarm.toolkitapi.ObjectType.AQUIFER" href="#StormSwarm.toolkitapi.ObjectType.AQUIFER">AQUIFER</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.ObjectType.CONTROL" href="#StormSwarm.toolkitapi.ObjectType.CONTROL">CONTROL</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.ObjectType.CURVE" href="#StormSwarm.toolkitapi.ObjectType.CURVE">CURVE</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.ObjectType.GAGE" href="#StormSwarm.toolkitapi.ObjectType.GAGE">GAGE</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.ObjectType.LANDUSE" href="#StormSwarm.toolkitapi.ObjectType.LANDUSE">LANDUSE</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.ObjectType.LID" href="#StormSwarm.toolkitapi.ObjectType.LID">LID</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.ObjectType.LINK" href="#StormSwarm.toolkitapi.ObjectType.LINK">LINK</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.ObjectType.MAX_OBJ_TYPES" href="#StormSwarm.toolkitapi.ObjectType.MAX_OBJ_TYPES">MAX_OBJ_TYPES</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.ObjectType.NODE" href="#StormSwarm.toolkitapi.ObjectType.NODE">NODE</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.ObjectType.POLLUT" href="#StormSwarm.toolkitapi.ObjectType.POLLUT">POLLUT</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.ObjectType.SHAPE" href="#StormSwarm.toolkitapi.ObjectType.SHAPE">SHAPE</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.ObjectType.SNOWMELT" href="#StormSwarm.toolkitapi.ObjectType.SNOWMELT">SNOWMELT</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.ObjectType.SUBCATCH" href="#StormSwarm.toolkitapi.ObjectType.SUBCATCH">SUBCATCH</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.ObjectType.TIMEPATTERN" href="#StormSwarm.toolkitapi.ObjectType.TIMEPATTERN">TIMEPATTERN</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.ObjectType.TRANSECT" href="#StormSwarm.toolkitapi.ObjectType.TRANSECT">TRANSECT</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.ObjectType.TSERIES" href="#StormSwarm.toolkitapi.ObjectType.TSERIES">TSERIES</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.ObjectType.UNITHYD" href="#StormSwarm.toolkitapi.ObjectType.UNITHYD">UNITHYD</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.OutfallStats" href="#StormSwarm.toolkitapi.OutfallStats">OutfallStats</a></code></h4>
+<ul class="">
+<li><code><a title="StormSwarm.toolkitapi.OutfallStats.avgFlow" href="#StormSwarm.toolkitapi.OutfallStats.avgFlow">avgFlow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.OutfallStats.maxFlow" href="#StormSwarm.toolkitapi.OutfallStats.maxFlow">maxFlow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.OutfallStats.totalLoad" href="#StormSwarm.toolkitapi.OutfallStats.totalLoad">totalLoad</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.OutfallStats.totalPeriods" href="#StormSwarm.toolkitapi.OutfallStats.totalPeriods">totalPeriods</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.PumpStats" href="#StormSwarm.toolkitapi.PumpStats">PumpStats</a></code></h4>
+<ul class="two-column">
+<li><code><a title="StormSwarm.toolkitapi.PumpStats.avgFlow" href="#StormSwarm.toolkitapi.PumpStats.avgFlow">avgFlow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.PumpStats.energy" href="#StormSwarm.toolkitapi.PumpStats.energy">energy</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.PumpStats.maxFlow" href="#StormSwarm.toolkitapi.PumpStats.maxFlow">maxFlow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.PumpStats.minFlow" href="#StormSwarm.toolkitapi.PumpStats.minFlow">minFlow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.PumpStats.offCurveHigh" href="#StormSwarm.toolkitapi.PumpStats.offCurveHigh">offCurveHigh</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.PumpStats.offCurveLow" href="#StormSwarm.toolkitapi.PumpStats.offCurveLow">offCurveLow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.PumpStats.startUps" href="#StormSwarm.toolkitapi.PumpStats.startUps">startUps</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.PumpStats.totalPeriods" href="#StormSwarm.toolkitapi.PumpStats.totalPeriods">totalPeriods</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.PumpStats.utilized" href="#StormSwarm.toolkitapi.PumpStats.utilized">utilized</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.PumpStats.volume" href="#StormSwarm.toolkitapi.PumpStats.volume">volume</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.RoutingTotals" href="#StormSwarm.toolkitapi.RoutingTotals">RoutingTotals</a></code></h4>
+<ul class="two-column">
+<li><code><a title="StormSwarm.toolkitapi.RoutingTotals.dwInflow" href="#StormSwarm.toolkitapi.RoutingTotals.dwInflow">dwInflow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.RoutingTotals.evapLoss" href="#StormSwarm.toolkitapi.RoutingTotals.evapLoss">evapLoss</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.RoutingTotals.exInflow" href="#StormSwarm.toolkitapi.RoutingTotals.exInflow">exInflow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.RoutingTotals.finalStorage" href="#StormSwarm.toolkitapi.RoutingTotals.finalStorage">finalStorage</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.RoutingTotals.flooding" href="#StormSwarm.toolkitapi.RoutingTotals.flooding">flooding</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.RoutingTotals.gwInflow" href="#StormSwarm.toolkitapi.RoutingTotals.gwInflow">gwInflow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.RoutingTotals.iiInflow" href="#StormSwarm.toolkitapi.RoutingTotals.iiInflow">iiInflow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.RoutingTotals.initStorage" href="#StormSwarm.toolkitapi.RoutingTotals.initStorage">initStorage</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.RoutingTotals.outflow" href="#StormSwarm.toolkitapi.RoutingTotals.outflow">outflow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.RoutingTotals.pctError" href="#StormSwarm.toolkitapi.RoutingTotals.pctError">pctError</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.RoutingTotals.reacted" href="#StormSwarm.toolkitapi.RoutingTotals.reacted">reacted</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.RoutingTotals.seepLoss" href="#StormSwarm.toolkitapi.RoutingTotals.seepLoss">seepLoss</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.RoutingTotals.wwInflow" href="#StormSwarm.toolkitapi.RoutingTotals.wwInflow">wwInflow</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.RunoffTotals" href="#StormSwarm.toolkitapi.RunoffTotals">RunoffTotals</a></code></h4>
+<ul class="two-column">
+<li><code><a title="StormSwarm.toolkitapi.RunoffTotals.drains" href="#StormSwarm.toolkitapi.RunoffTotals.drains">drains</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.RunoffTotals.evap" href="#StormSwarm.toolkitapi.RunoffTotals.evap">evap</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.RunoffTotals.finalSnowCover" href="#StormSwarm.toolkitapi.RunoffTotals.finalSnowCover">finalSnowCover</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.RunoffTotals.finalStorage" href="#StormSwarm.toolkitapi.RunoffTotals.finalStorage">finalStorage</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.RunoffTotals.infil" href="#StormSwarm.toolkitapi.RunoffTotals.infil">infil</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.RunoffTotals.initSnowCover" href="#StormSwarm.toolkitapi.RunoffTotals.initSnowCover">initSnowCover</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.RunoffTotals.initStorage" href="#StormSwarm.toolkitapi.RunoffTotals.initStorage">initStorage</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.RunoffTotals.pctError" href="#StormSwarm.toolkitapi.RunoffTotals.pctError">pctError</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.RunoffTotals.rainfall" href="#StormSwarm.toolkitapi.RunoffTotals.rainfall">rainfall</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.RunoffTotals.runoff" href="#StormSwarm.toolkitapi.RunoffTotals.runoff">runoff</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.RunoffTotals.runon" href="#StormSwarm.toolkitapi.RunoffTotals.runon">runon</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.RunoffTotals.snowRemoved" href="#StormSwarm.toolkitapi.RunoffTotals.snowRemoved">snowRemoved</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.SMO_apiFunction" href="#StormSwarm.toolkitapi.SMO_apiFunction">SMO_apiFunction</a></code></h4>
+<ul class="">
+<li><code><a title="StormSwarm.toolkitapi.SMO_apiFunction.getAttribute" href="#StormSwarm.toolkitapi.SMO_apiFunction.getAttribute">getAttribute</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_apiFunction.getResult" href="#StormSwarm.toolkitapi.SMO_apiFunction.getResult">getResult</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.SMO_elementCount" href="#StormSwarm.toolkitapi.SMO_elementCount">SMO_elementCount</a></code></h4>
+<ul class="">
+<li><code><a title="StormSwarm.toolkitapi.SMO_elementCount.linkCount" href="#StormSwarm.toolkitapi.SMO_elementCount.linkCount">linkCount</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_elementCount.nodeCount" href="#StormSwarm.toolkitapi.SMO_elementCount.nodeCount">nodeCount</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_elementCount.pollutantCount" href="#StormSwarm.toolkitapi.SMO_elementCount.pollutantCount">pollutantCount</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_elementCount.subcatchCount" href="#StormSwarm.toolkitapi.SMO_elementCount.subcatchCount">subcatchCount</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.SMO_elementType" href="#StormSwarm.toolkitapi.SMO_elementType">SMO_elementType</a></code></h4>
+<ul class="">
+<li><code><a title="StormSwarm.toolkitapi.SMO_elementType.SM_link" href="#StormSwarm.toolkitapi.SMO_elementType.SM_link">SM_link</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_elementType.SM_node" href="#StormSwarm.toolkitapi.SMO_elementType.SM_node">SM_node</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_elementType.SM_subcatch" href="#StormSwarm.toolkitapi.SMO_elementType.SM_subcatch">SM_subcatch</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_elementType.SM_sys" href="#StormSwarm.toolkitapi.SMO_elementType.SM_sys">SM_sys</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.SMO_linkAttribute" href="#StormSwarm.toolkitapi.SMO_linkAttribute">SMO_linkAttribute</a></code></h4>
+<ul class="two-column">
+<li><code><a title="StormSwarm.toolkitapi.SMO_linkAttribute.capacity" href="#StormSwarm.toolkitapi.SMO_linkAttribute.capacity">capacity</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_linkAttribute.flow_depth" href="#StormSwarm.toolkitapi.SMO_linkAttribute.flow_depth">flow_depth</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_linkAttribute.flow_rate_link" href="#StormSwarm.toolkitapi.SMO_linkAttribute.flow_rate_link">flow_rate_link</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_linkAttribute.flow_velocity" href="#StormSwarm.toolkitapi.SMO_linkAttribute.flow_velocity">flow_velocity</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_linkAttribute.flow_volume" href="#StormSwarm.toolkitapi.SMO_linkAttribute.flow_volume">flow_volume</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_linkAttribute.pollutant_conc_link" href="#StormSwarm.toolkitapi.SMO_linkAttribute.pollutant_conc_link">pollutant_conc_link</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.SMO_nodeAttribute" href="#StormSwarm.toolkitapi.SMO_nodeAttribute">SMO_nodeAttribute</a></code></h4>
+<ul class="two-column">
+<li><code><a title="StormSwarm.toolkitapi.SMO_nodeAttribute.flooding_losses" href="#StormSwarm.toolkitapi.SMO_nodeAttribute.flooding_losses">flooding_losses</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_nodeAttribute.hydraulic_head" href="#StormSwarm.toolkitapi.SMO_nodeAttribute.hydraulic_head">hydraulic_head</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_nodeAttribute.invert_depth" href="#StormSwarm.toolkitapi.SMO_nodeAttribute.invert_depth">invert_depth</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_nodeAttribute.lateral_inflow" href="#StormSwarm.toolkitapi.SMO_nodeAttribute.lateral_inflow">lateral_inflow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_nodeAttribute.pollutant_conc_node" href="#StormSwarm.toolkitapi.SMO_nodeAttribute.pollutant_conc_node">pollutant_conc_node</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_nodeAttribute.stored_ponded_volume" href="#StormSwarm.toolkitapi.SMO_nodeAttribute.stored_ponded_volume">stored_ponded_volume</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_nodeAttribute.total_inflow" href="#StormSwarm.toolkitapi.SMO_nodeAttribute.total_inflow">total_inflow</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.SMO_subcatchAttribute" href="#StormSwarm.toolkitapi.SMO_subcatchAttribute">SMO_subcatchAttribute</a></code></h4>
+<ul class="two-column">
+<li><code><a title="StormSwarm.toolkitapi.SMO_subcatchAttribute.evap_loss" href="#StormSwarm.toolkitapi.SMO_subcatchAttribute.evap_loss">evap_loss</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_subcatchAttribute.gwoutflow_rate" href="#StormSwarm.toolkitapi.SMO_subcatchAttribute.gwoutflow_rate">gwoutflow_rate</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_subcatchAttribute.gwtable_elev" href="#StormSwarm.toolkitapi.SMO_subcatchAttribute.gwtable_elev">gwtable_elev</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_subcatchAttribute.infil_loss" href="#StormSwarm.toolkitapi.SMO_subcatchAttribute.infil_loss">infil_loss</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_subcatchAttribute.pollutant_conc_subcatch" href="#StormSwarm.toolkitapi.SMO_subcatchAttribute.pollutant_conc_subcatch">pollutant_conc_subcatch</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_subcatchAttribute.rainfall_subcatch" href="#StormSwarm.toolkitapi.SMO_subcatchAttribute.rainfall_subcatch">rainfall_subcatch</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_subcatchAttribute.runoff_rate" href="#StormSwarm.toolkitapi.SMO_subcatchAttribute.runoff_rate">runoff_rate</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_subcatchAttribute.snow_depth_subcatch" href="#StormSwarm.toolkitapi.SMO_subcatchAttribute.snow_depth_subcatch">snow_depth_subcatch</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_subcatchAttribute.soil_moisture" href="#StormSwarm.toolkitapi.SMO_subcatchAttribute.soil_moisture">soil_moisture</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.SMO_systemAttribute" href="#StormSwarm.toolkitapi.SMO_systemAttribute">SMO_systemAttribute</a></code></h4>
+<ul class="two-column">
+<li><code><a title="StormSwarm.toolkitapi.SMO_systemAttribute.RDII_inflow" href="#StormSwarm.toolkitapi.SMO_systemAttribute.RDII_inflow">RDII_inflow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_systemAttribute.air_temp" href="#StormSwarm.toolkitapi.SMO_systemAttribute.air_temp">air_temp</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_systemAttribute.direct_inflow" href="#StormSwarm.toolkitapi.SMO_systemAttribute.direct_inflow">direct_inflow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_systemAttribute.dry_weather_inflow" href="#StormSwarm.toolkitapi.SMO_systemAttribute.dry_weather_inflow">dry_weather_inflow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_systemAttribute.evap_infil_loss" href="#StormSwarm.toolkitapi.SMO_systemAttribute.evap_infil_loss">evap_infil_loss</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_systemAttribute.evap_rate" href="#StormSwarm.toolkitapi.SMO_systemAttribute.evap_rate">evap_rate</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_systemAttribute.flood_losses" href="#StormSwarm.toolkitapi.SMO_systemAttribute.flood_losses">flood_losses</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_systemAttribute.groundwater_inflow" href="#StormSwarm.toolkitapi.SMO_systemAttribute.groundwater_inflow">groundwater_inflow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_systemAttribute.outfall_flows" href="#StormSwarm.toolkitapi.SMO_systemAttribute.outfall_flows">outfall_flows</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_systemAttribute.rainfall_system" href="#StormSwarm.toolkitapi.SMO_systemAttribute.rainfall_system">rainfall_system</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_systemAttribute.runoff_flow" href="#StormSwarm.toolkitapi.SMO_systemAttribute.runoff_flow">runoff_flow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_systemAttribute.snow_depth_system" href="#StormSwarm.toolkitapi.SMO_systemAttribute.snow_depth_system">snow_depth_system</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_systemAttribute.total_lateral_inflow" href="#StormSwarm.toolkitapi.SMO_systemAttribute.total_lateral_inflow">total_lateral_inflow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_systemAttribute.volume_stored" href="#StormSwarm.toolkitapi.SMO_systemAttribute.volume_stored">volume_stored</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.SMO_time" href="#StormSwarm.toolkitapi.SMO_time">SMO_time</a></code></h4>
+<ul class="">
+<li><code><a title="StormSwarm.toolkitapi.SMO_time.numPeriods" href="#StormSwarm.toolkitapi.SMO_time.numPeriods">numPeriods</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_time.reportStep" href="#StormSwarm.toolkitapi.SMO_time.reportStep">reportStep</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.SMO_unit" href="#StormSwarm.toolkitapi.SMO_unit">SMO_unit</a></code></h4>
+<ul class="">
+<li><code><a title="StormSwarm.toolkitapi.SMO_unit.concentration" href="#StormSwarm.toolkitapi.SMO_unit.concentration">concentration</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SMO_unit.flow_rate" href="#StormSwarm.toolkitapi.SMO_unit.flow_rate">flow_rate</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.SimAnalysisSettings" href="#StormSwarm.toolkitapi.SimAnalysisSettings">SimAnalysisSettings</a></code></h4>
+<ul class="two-column">
+<li><code><a title="StormSwarm.toolkitapi.SimAnalysisSettings.AllowPonding" href="#StormSwarm.toolkitapi.SimAnalysisSettings.AllowPonding">AllowPonding</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SimAnalysisSettings.IgnoreGwater" href="#StormSwarm.toolkitapi.SimAnalysisSettings.IgnoreGwater">IgnoreGwater</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SimAnalysisSettings.IgnoreQuality" href="#StormSwarm.toolkitapi.SimAnalysisSettings.IgnoreQuality">IgnoreQuality</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SimAnalysisSettings.IgnoreRDII" href="#StormSwarm.toolkitapi.SimAnalysisSettings.IgnoreRDII">IgnoreRDII</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SimAnalysisSettings.IgnoreRainfall" href="#StormSwarm.toolkitapi.SimAnalysisSettings.IgnoreRainfall">IgnoreRainfall</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SimAnalysisSettings.IgnoreRouting" href="#StormSwarm.toolkitapi.SimAnalysisSettings.IgnoreRouting">IgnoreRouting</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SimAnalysisSettings.IgnoreSnowmelt" href="#StormSwarm.toolkitapi.SimAnalysisSettings.IgnoreSnowmelt">IgnoreSnowmelt</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SimAnalysisSettings.SkipSteadyState" href="#StormSwarm.toolkitapi.SimAnalysisSettings.SkipSteadyState">SkipSteadyState</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.SimulationParameters" href="#StormSwarm.toolkitapi.SimulationParameters">SimulationParameters</a></code></h4>
+<ul class="two-column">
+<li><code><a title="StormSwarm.toolkitapi.SimulationParameters.CourantFactor" href="#StormSwarm.toolkitapi.SimulationParameters.CourantFactor">CourantFactor</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SimulationParameters.FlowError" href="#StormSwarm.toolkitapi.SimulationParameters.FlowError">FlowError</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SimulationParameters.GwaterError" href="#StormSwarm.toolkitapi.SimulationParameters.GwaterError">GwaterError</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SimulationParameters.HeadTol" href="#StormSwarm.toolkitapi.SimulationParameters.HeadTol">HeadTol</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SimulationParameters.LatFlowTol" href="#StormSwarm.toolkitapi.SimulationParameters.LatFlowTol">LatFlowTol</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SimulationParameters.LengtheningStep" href="#StormSwarm.toolkitapi.SimulationParameters.LengtheningStep">LengtheningStep</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SimulationParameters.MinRouteStep" href="#StormSwarm.toolkitapi.SimulationParameters.MinRouteStep">MinRouteStep</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SimulationParameters.MinSlope" href="#StormSwarm.toolkitapi.SimulationParameters.MinSlope">MinSlope</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SimulationParameters.MinSurfArea" href="#StormSwarm.toolkitapi.SimulationParameters.MinSurfArea">MinSurfArea</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SimulationParameters.QualError" href="#StormSwarm.toolkitapi.SimulationParameters.QualError">QualError</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SimulationParameters.RouteStep" href="#StormSwarm.toolkitapi.SimulationParameters.RouteStep">RouteStep</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SimulationParameters.RunoffError" href="#StormSwarm.toolkitapi.SimulationParameters.RunoffError">RunoffError</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SimulationParameters.StartDryDays" href="#StormSwarm.toolkitapi.SimulationParameters.StartDryDays">StartDryDays</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SimulationParameters.SysFlowTol" href="#StormSwarm.toolkitapi.SimulationParameters.SysFlowTol">SysFlowTol</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.SimulationTime" href="#StormSwarm.toolkitapi.SimulationTime">SimulationTime</a></code></h4>
+<ul class="">
+<li><code><a title="StormSwarm.toolkitapi.SimulationTime.EndDateTime" href="#StormSwarm.toolkitapi.SimulationTime.EndDateTime">EndDateTime</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SimulationTime.ReportStart" href="#StormSwarm.toolkitapi.SimulationTime.ReportStart">ReportStart</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SimulationTime.StartDateTime" href="#StormSwarm.toolkitapi.SimulationTime.StartDateTime">StartDateTime</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.SimulationUnits" href="#StormSwarm.toolkitapi.SimulationUnits">SimulationUnits</a></code></h4>
+<ul class="">
+<li><code><a title="StormSwarm.toolkitapi.SimulationUnits.FlowUnits" href="#StormSwarm.toolkitapi.SimulationUnits.FlowUnits">FlowUnits</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SimulationUnits.UnitSystem" href="#StormSwarm.toolkitapi.SimulationUnits.UnitSystem">UnitSystem</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.StorageStats" href="#StormSwarm.toolkitapi.StorageStats">StorageStats</a></code></h4>
+<ul class="two-column">
+<li><code><a title="StormSwarm.toolkitapi.StorageStats.avgVol" href="#StormSwarm.toolkitapi.StorageStats.avgVol">avgVol</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.StorageStats.evapLosses" href="#StormSwarm.toolkitapi.StorageStats.evapLosses">evapLosses</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.StorageStats.exfilLosses" href="#StormSwarm.toolkitapi.StorageStats.exfilLosses">exfilLosses</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.StorageStats.initVol" href="#StormSwarm.toolkitapi.StorageStats.initVol">initVol</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.StorageStats.maxFlow" href="#StormSwarm.toolkitapi.StorageStats.maxFlow">maxFlow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.StorageStats.maxVol" href="#StormSwarm.toolkitapi.StorageStats.maxVol">maxVol</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.StorageStats.maxVolDate" href="#StormSwarm.toolkitapi.StorageStats.maxVolDate">maxVolDate</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.SubcParams" href="#StormSwarm.toolkitapi.SubcParams">SubcParams</a></code></h4>
+<ul class="">
+<li><code><a title="StormSwarm.toolkitapi.SubcParams.area" href="#StormSwarm.toolkitapi.SubcParams.area">area</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SubcParams.curbLength" href="#StormSwarm.toolkitapi.SubcParams.curbLength">curbLength</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SubcParams.fracImperv" href="#StormSwarm.toolkitapi.SubcParams.fracImperv">fracImperv</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SubcParams.slope" href="#StormSwarm.toolkitapi.SubcParams.slope">slope</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SubcParams.width" href="#StormSwarm.toolkitapi.SubcParams.width">width</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.SubcResults" href="#StormSwarm.toolkitapi.SubcResults">SubcResults</a></code></h4>
+<ul class="two-column">
+<li><code><a title="StormSwarm.toolkitapi.SubcResults.evapLoss" href="#StormSwarm.toolkitapi.SubcResults.evapLoss">evapLoss</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SubcResults.infilLoss" href="#StormSwarm.toolkitapi.SubcResults.infilLoss">infilLoss</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SubcResults.newRunoff" href="#StormSwarm.toolkitapi.SubcResults.newRunoff">newRunoff</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SubcResults.newSnowDepth" href="#StormSwarm.toolkitapi.SubcResults.newSnowDepth">newSnowDepth</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SubcResults.rainfall" href="#StormSwarm.toolkitapi.SubcResults.rainfall">rainfall</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SubcResults.runon" href="#StormSwarm.toolkitapi.SubcResults.runon">runon</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="StormSwarm.toolkitapi.SubcStats" href="#StormSwarm.toolkitapi.SubcStats">SubcStats</a></code></h4>
+<ul class="two-column">
+<li><code><a title="StormSwarm.toolkitapi.SubcStats.evap" href="#StormSwarm.toolkitapi.SubcStats.evap">evap</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SubcStats.infil" href="#StormSwarm.toolkitapi.SubcStats.infil">infil</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SubcStats.maxFlow" href="#StormSwarm.toolkitapi.SubcStats.maxFlow">maxFlow</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SubcStats.precip" href="#StormSwarm.toolkitapi.SubcStats.precip">precip</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SubcStats.runoff" href="#StormSwarm.toolkitapi.SubcStats.runoff">runoff</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SubcStats.runon" href="#StormSwarm.toolkitapi.SubcStats.runon">runon</a></code></li>
+<li><code><a title="StormSwarm.toolkitapi.SubcStats.surfaceBuildup" href="#StormSwarm.toolkitapi.SubcStats.surfaceBuildup">surfaceBuildup</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.5.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>
