@@ -1,6 +1,6 @@
-# Control API
+# Storm Swarm 
 
-Functions for simulating control algorithms in epa-swmm. 
+⛈️ ⛈️ ⛈️ ⛈️
 
 ## Dependency 
 
