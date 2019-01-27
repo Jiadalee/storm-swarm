@@ -5,7 +5,7 @@ setup(name='StormSwarm',
       description='SWMM API for real time control',
       author='Abhiram Mullapudi',
       author_email='abhiramm@umich.edu',
-      url='http://open-storm.org',
+      url='https://github.com/kLabUM/storm-swarm',
       packages=['StormSwarm'],
       install_requires=['numpy']
      )
