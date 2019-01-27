@@ -17,6 +17,7 @@ def worker_bee(config):
     experience = {}
     experience["state"] = []
     experience["state_new"] = []
+    experience["actions"] = []
     experience["reward"] = []
     experience["done"] = []
 
@@ -24,7 +25,7 @@ def worker_bee(config):
 
     state = env.initial_state()
     while not done:
-        actions = controller(state)
+        actions = controller.act(state)
 
         state_new, reward, done = env.step(actions)
 
@@ -32,6 +33,7 @@ def worker_bee(config):
         
         experience["state"].append(state)
         experience["state_new"].append(state_new)
+        experience["actions"].append(actions)
         experience["reward"].append(reward)
         experience["done"].append(done)
     

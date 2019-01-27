@@ -5,6 +5,10 @@ __pycache__/
 *.swp
 # C extensions
 
+# SWMM files
+.rpt
+.out
+
 # Distribution / packaging
 .Python
 build/
