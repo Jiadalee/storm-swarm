@@ -23,7 +23,7 @@ import warnings
 import six
 
 # Local imports
-from lib import DLL_SELECTION
+from StormSwarm.lib import DLL_SELECTION
 import toolkitapi as tka
 
 # Local variables
