@@ -24,7 +24,7 @@ import six
 
 # Local imports
 from StormSwarm.lib import DLL_SELECTION
-import toolkitapi as tka
+import StormSwarm.toolkitapi as tka
 
 # Local variables
 SWMM_VER_51011 = '5.1.11'
